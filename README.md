@@ -67,11 +67,11 @@ React.
 
 **From Monday to Thursday**
 
-The code must be submitted with a link to a public repository
-Unit test report
-Selenium test success report
-Each microservice must have its own project
-Each microservice with its own tests
-All data will be invented and must be included in the delivery
+        • The code must be submitted with a link to a public repository.
+        • Unit test report.
+        • Selenium test success report.
+        • Each microservice must have its own project.
+        • Each microservice with its own tests.
+        • All data will be invented and must be included in the delivery.
 
 **deadline for submission: thursday at 5 pm**
