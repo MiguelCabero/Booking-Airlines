@@ -11,8 +11,8 @@ microservices must be designed to serve to cover the different functionality req
 
 # Minimum required microservices
 
-The price requests according to some indicated parameters.
-    • The flight reservation
+    • The price requests according to some indicated parameters.
+    • The flight reservation.
     • Information about access to the application.
     
     
