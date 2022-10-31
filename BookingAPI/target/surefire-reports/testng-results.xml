@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Command line suite" duration-ms="4141" started-at="2022-10-28T20:44:54 CEST" finished-at="2022-10-28T20:44:58 CEST">
+    <groups>
+    </groups>
+    <test name="Command line test" duration-ms="4141" started-at="2022-10-28T20:44:54 CEST" finished-at="2022-10-28T20:44:58 CEST">
+      <class name="HearthStoneAPITest">
+        <test-method status="PASS" signature="setup()[pri:0, instance:HearthStoneAPITest@1fc609f]" name="setup" is-config="true" duration-ms="0" started-at="2022-10-28T20:44:56 CEST" finished-at="2022-10-28T20:44:56 CEST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="apiQueryResponse()[pri:0, instance:HearthStoneAPITest@1fc609f]" name="apiQueryResponse" duration-ms="2013" started-at="2022-10-28T20:44:56 CEST" finished-at="2022-10-28T20:44:58 CEST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- apiQueryResponse -->
+      </class> <!-- HearthStoneAPITest -->
+      <class name="ChuckNorrisAPITest">
+        <test-method status="PASS" signature="setup()[pri:0, instance:ChuckNorrisAPITest@1d176f7]" name="setup" is-config="true" duration-ms="306" started-at="2022-10-28T20:44:54 CEST" finished-at="2022-10-28T20:44:55 CEST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="apiQueryResponse()[pri:0, instance:ChuckNorrisAPITest@1d176f7]" name="apiQueryResponse" duration-ms="1407" started-at="2022-10-28T20:44:55 CEST" finished-at="2022-10-28T20:44:56 CEST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- apiQueryResponse -->
+        <test-method status="PASS" signature="randomResponse()[pri:0, instance:ChuckNorrisAPITest@1d176f7]" name="randomResponse" duration-ms="391" started-at="2022-10-28T20:44:56 CEST" finished-at="2022-10-28T20:44:56 CEST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- randomResponse -->
+      </class> <!-- ChuckNorrisAPITest -->
+    </test> <!-- Command line test -->
+  </suite> <!-- Command line suite -->
+</testng-results>
