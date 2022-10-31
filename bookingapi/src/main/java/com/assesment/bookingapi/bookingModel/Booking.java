@@ -1,4 +1,4 @@
-package bookingModel;
+package com.assesment.bookingapi.bookingModel;
 
 import java.time.LocalDateTime;
 
