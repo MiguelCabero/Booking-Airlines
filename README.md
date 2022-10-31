@@ -57,8 +57,6 @@ depend on a key value indicated on the name of the first passenger.
 You have to create Unit Tests for the API calls and tests in Selenium for the interface made in
 React.
 
-# ############################################################ #
-
 # STEPS TO FOLLOW
 
     1. Plan
