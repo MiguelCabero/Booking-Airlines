@@ -75,5 +75,3 @@ Each microservice with its own tests
 All data will be invented and must be included in the delivery
 
 **deadline for submission: thursday at 5 pm**
-
-# ############################################################ #
