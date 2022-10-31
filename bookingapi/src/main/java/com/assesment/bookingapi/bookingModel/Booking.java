@@ -34,8 +34,9 @@ public class Booking {
 	@Column(name = "passengers_number")
 	private int passengersNumber;
 
-	public Booking(Integer id, Integer userId, Integer airlineId, LocalDateTime localDateTime, int origin,
-			int destination, boolean luggage, double price, int passengersNumber) {
+	public Booking(Integer id, Integer userId, Integer airlineId,
+			LocalDateTime localDateTime, int origin, int destination,
+			boolean luggage, double price, int passengersNumber) {
 		this.id = id;
 		this.userId = userId;
 		this.airlineId = airlineId;
@@ -123,9 +124,12 @@ public class Booking {
 
 	@Override
 	public String toString() {
-		return "Booking [id=" + id + ", userId=" + userId + ", airlineId=" + airlineId + ", localDateTime="
-				+ localDateTime + ", origin=" + origin + ", destination=" + destination + ", luggage=" + luggage
-				+ ", price=" + price + ", passengersNumber=" + passengersNumber + "]";
+		return "Booking [id=" + id + ", userId=" + userId
+				+ ", airlineId=" + airlineId + ", localDateTime="
+				+ localDateTime + ", origin=" + origin
+				+ ", destination=" + destination + ", luggage="
+				+ luggage + ", price=" + price + ", passengersNumber="
+				+ passengersNumber + "]";
 	}
 
 }
