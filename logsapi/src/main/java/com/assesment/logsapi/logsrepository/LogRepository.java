@@ -9,4 +9,7 @@ import com.assesment.logsapi.logsmodel.LogRegist;
 public interface LogRepository
 		extends JpaRepository<LogRegist, Integer> {
 
+	LogRegist findByClientIpAndTimestampStart(String clientIp,
+			String timestampStart);
+
 }

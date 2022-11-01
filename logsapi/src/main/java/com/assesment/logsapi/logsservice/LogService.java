@@ -1,6 +1,7 @@
 package com.assesment.logsapi.logsservice;
 
 import java.net.URI;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,19 @@ public class LogService {
 				.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(savedLog.getId()).toUri();
 		return ResponseEntity.created(location).build();
+	}
+
+	public LogRegist getByIpAndTimeStamp(String ip,
+			String timestamp) {
+
+		return logRepository.findByClientIpAndTimestampStart(ip,
+				timestamp);
+
+	}
+
+	public Optional<LogRegist> getById(Integer id) {
+
+		return logRepository.findById(id);
 	}
 
 }
