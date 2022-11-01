@@ -20,7 +20,11 @@ public class Airline {
 	@Column(name = "base_price")
 	private double basePrice;
 
-	public Airline(Integer id, String name, boolean includedLuggage, double basePrice) {
+	public Airline() {
+	}
+
+	public Airline(Integer id, String name, boolean includedLuggage,
+			double basePrice) {
 		this.id = id;
 		this.name = name;
 		this.includedLuggage = includedLuggage;
@@ -61,7 +65,8 @@ public class Airline {
 
 	@Override
 	public String toString() {
-		return "Airline [id=" + id + ", name=" + name + ", includedLuggage=" + includedLuggage + ", basePrice="
-				+ basePrice + "]";
+		return "Airline [id=" + id + ", name=" + name
+				+ ", includedLuggage=" + includedLuggage
+				+ ", basePrice=" + basePrice + "]";
 	}
 }
