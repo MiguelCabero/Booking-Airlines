@@ -23,7 +23,8 @@ class LogsapiApplicationTests {
 
 	@BeforeAll
 	public void setup() {
-		timeStamp = Timestamp.valueOf(LocalDateTime.now()).toString().replaceAll(" ", "");
+		timeStamp = Timestamp.valueOf(LocalDateTime.now()).toString()
+				.replaceAll(" ", "");
 		clientIpString = "127.0.0.1";
 	}
 
@@ -33,38 +34,68 @@ class LogsapiApplicationTests {
 
 		final String resource = "http://localhost:8082/api/logs";
 
-		final String payloadString = "{\r\n" + "    \"clientIp\": \"" + clientIpString + "\",\r\n"
-				+ "    \"timestampStart\": \"" + timeStamp + "\"\r\n" + "}";
+		final String payloadString = "{\r\n" + "    \"clientIp\": \""
+				+ clientIpString + "\",\r\n"
+				+ "    \"timestampStart\": \"" + timeStamp + "\"\r\n"
+				+ "}";
 
-		final String responseString = given().header("Content-type", "application/json").when().body(payloadString)
-				.post(resource).then().log().all().assertThat().statusCode(201).extract().asString();
+		final String responseString = given()
+				.header("Content-type", "application/json").when()
+				.body(payloadString).post(resource).then().log().all()
+				.assertThat().statusCode(201).extract().asString();
 	}
 
 	@Test
 	@Order(2)
 	public void findByIpAndTimeStampReturnsOk() {
 
-		final String resource = "http://localhost:8082/api/logs/" + clientIpString + "/" + timeStamp;
+		final String resource = "http://localhost:8082/api/logs/"
+				+ clientIpString + "/" + timeStamp;
 
 		System.out.println(resource);
-		final String responseString = given().header("Accept", "application/json").when().get(resource).then().log()
-				.all().assertThat().statusCode(200).extract().asString();
+		final String responseString = given()
+				.header("Accept", "application/json").when()
+				.get(resource).then().log().all().assertThat()
+				.statusCode(200).extract().asString();
 	}
 
 	@Test
 	@Order(3)
-	public void updateByIdAndTimeStampReturnsOk() throws InterruptedException {
+	public void findByIpAndTimeStampReturnsNotFound() {
 
-		String timeStampEnd = Timestamp.valueOf(LocalDateTime.now()).toString().replaceAll(" ", "");
+		final String resource = "http://localhost:8082/api/logs/"
+				+ "128.5.5.19" + "/" + timeStamp;
 
-		final String resource = "http://localhost:8082/api/logs/" + clientIpString + "/" + timeStamp;
+		System.out.println(resource);
+		final String responseString = given()
+				.header("Accept", "application/json").when()
+				.get(resource).then().log().all().assertThat()
+				.statusCode(404).extract().asString();
+	}
 
-		final String timeStampUpdate = "{\r\n" + "\"timestampEnd\" : \"" + timeStampEnd + "\"\r\n" + "}";
+	@Test
+	@Order(4)
+	public void updateByIdAndTimeStampReturnsOk()
+			throws InterruptedException {
+
+		final String timeStampEnd = Timestamp
+				.valueOf(LocalDateTime.now()).toString()
+				.replaceAll(" ", "");
+
+		final String resource = "http://localhost:8082/api/logs/"
+				+ clientIpString + "/" + timeStamp;
+
+		final String timeStampUpdate = "{\r\n"
+				+ "\"timestampEnd\" : \"" + timeStampEnd + "\"\r\n"
+				+ "}";
 
 		System.out.println(timeStampUpdate);
 
 		System.out.println(resource);
-		final String responseString = given().header("Content-type", "application/json").when().body(timeStampUpdate)
-				.put(resource).then().log().all().assertThat().statusCode(200).extract().asString();
+		final String responseString = given()
+				.header("Content-type", "application/json").when()
+				.body(timeStampUpdate).put(resource).then().log()
+				.all().assertThat().statusCode(200).extract()
+				.asString();
 	}
 }
