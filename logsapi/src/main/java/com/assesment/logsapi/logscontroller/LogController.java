@@ -25,41 +25,33 @@ public class LogController {
 	private LogService logService;
 
 	@PostMapping(path = "/api/logs")
-	public ResponseEntity<LogRegist> addLog(
-			@Valid @RequestBody LogRegist logRegist) {
+	public ResponseEntity<LogRegist> addLog(@Valid @RequestBody LogRegist logRegist) {
 		return logService.addLog(logRegist);
 	}
 
 	@GetMapping(path = "/api/logs/{ip}/{timestamp}")
-	ResponseEntity<LogRegist> getByIpAndTimeStamp(
-			@PathVariable("ip") String ip,
+	ResponseEntity<LogRegist> getByIpAndTimeStamp(@PathVariable("ip") String ip,
 			@PathVariable("timestamp") String timeStamp) {
 
-		final LogRegist retrievedLogRegist = logService
-				.getByIpAndTimeStamp(ip, timeStamp);
+		final LogRegist retrievedLogRegist = logService.getByIpAndTimeStamp(ip, timeStamp);
 
 		if (retrievedLogRegist == null) {
-			return new ResponseEntity<LogRegist>(retrievedLogRegist,
-					HttpStatus.NOT_FOUND);
+			return new ResponseEntity<LogRegist>(retrievedLogRegist, HttpStatus.NOT_FOUND);
 
 		}
 
-		return new ResponseEntity<LogRegist>(retrievedLogRegist,
-				HttpStatus.OK);
+		return new ResponseEntity<LogRegist>(retrievedLogRegist, HttpStatus.OK);
 
 	}
 
 	@GetMapping(path = "/api/logs/{id}")
-	ResponseEntity<Optional<LogRegist>> getByIpAndTimeStamp(
-			@PathVariable("id") Integer id) {
-		final LogRegist retrievedLogRegist = logService.getById(id)
-				.get();
+	ResponseEntity<Optional<LogRegist>> getByIpAndTimeStamp(@PathVariable("id") Integer id) {
+		final LogRegist retrievedLogRegist = logService.getById(id).get();
 
 		System.out.println(id);
 		System.out.println(retrievedLogRegist);
 
-		return new ResponseEntity<Optional<LogRegist>>(
-				logService.getById(id), HttpStatus.OK);
+		return new ResponseEntity<Optional<LogRegist>>(logService.getById(id), HttpStatus.OK);
 
 	}
 
