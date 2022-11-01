@@ -18,7 +18,7 @@ public class PriceService {
 		return priceRepository.findById(id);
 	}
 
-	public Float getPrice(Integer id, byte luggage, Double distance,
+	public double getPrice(Integer id, byte luggage, Double distance,
 			byte layover, int days_left, byte age_of_passenger) {
 
 		double distanceFactor = 1;
@@ -29,7 +29,7 @@ public class PriceService {
 
 		final Airline retrievedAirline = getById(id).get();
 		if (retrievedAirline == null) {
-			return (float) 0;
+			return 0;
 		}
 
 		if (distance > 2300) {
@@ -54,9 +54,9 @@ public class PriceService {
 					+ ((15 - days_left) * 0.1);
 		}
 
-		final Float finalPrice = (float) (retrievedAirline
-				.getBasePrice() * luggageFactor * distanceFactor
-				* stopsFactor * daysLeftFactor * ageFactor);
+		final double finalPrice = retrievedAirline.getBasePrice()
+				* luggageFactor * distanceFactor * stopsFactor
+				* daysLeftFactor * ageFactor;
 
 		return finalPrice;
 

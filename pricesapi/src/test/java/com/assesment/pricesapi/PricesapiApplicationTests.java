@@ -1,10 +1,12 @@
 package com.assesment.pricesapi;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.testng.Assert;
+
+import io.restassured.path.json.JsonPath;
 
 @SpringBootTest
 public class PricesapiApplicationTests {
@@ -23,7 +25,11 @@ public class PricesapiApplicationTests {
 				.header("Content-type", "application/json")
 				.header("Accept", "application/json").body(payload)
 				.post(resource).then().log().all().assertThat()
-				.statusCode(200).body("price", equalTo(119.0F))
-				.extract().asString();
+				.statusCode(200).extract().asString();
+
+		final JsonPath js = new JsonPath(responseString);
+		final String price = js.getString("price");
+
+		Assert.assertEquals(Double.parseDouble(price), 119.0);
 	}
 }
