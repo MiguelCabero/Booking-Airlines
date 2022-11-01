@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -55,4 +56,9 @@ public class LogController {
 
 	}
 
+	@PutMapping(path = "/api/logs/{ip}/{timestamp}")
+	ResponseEntity<LogRegist> updateTimeStampEnd(@PathVariable("ip") String ip,
+			@PathVariable("timestamp") String timestampStart, String timestampEnd) {
+		return logService.updateLog(ip, timestampStart, timestampEnd);
+	}
 }

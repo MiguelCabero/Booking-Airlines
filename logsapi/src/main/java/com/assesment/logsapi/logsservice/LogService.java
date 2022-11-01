@@ -19,23 +19,28 @@ public class LogService {
 
 	public ResponseEntity<LogRegist> addLog(LogRegist log) {
 		final LogRegist savedLog = logRepository.save(log);
-		final URI location = ServletUriComponentsBuilder
-				.fromCurrentRequest().path("/{id}")
+		final URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(savedLog.getId()).toUri();
 		return ResponseEntity.created(location).build();
 	}
 
-	public LogRegist getByIpAndTimeStamp(String ip,
-			String timestamp) {
-
-		return logRepository.findByClientIpAndTimestampStart(ip,
-				timestamp);
+	public LogRegist getByIpAndTimeStamp(String ip, String timestamp) {
+		return logRepository.findByClientIpAndTimestampStart(ip, timestamp);
 
 	}
 
 	public Optional<LogRegist> getById(Integer id) {
 
 		return logRepository.findById(id);
+	}
+
+	public ResponseEntity<LogRegist> updateLog(String ip, String timestapmStart, String timestampEnd) {
+		LogRegist retrievedLogRegist = logRepository.findByClientIpAndTimestampStart(ip, timestapmStart);
+		retrievedLogRegist.setTimestampEnd(timestampEnd);
+
+		logRepository.save(retrievedLogRegist);
+
+		return ResponseEntity.ok().build();
 	}
 
 }
