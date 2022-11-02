@@ -2,6 +2,7 @@ import './UserForm.component.css';
 import UserInputs from './UserInputs';
 import { React, useState, useContext } from 'react';
 import AppContext from '../../store/app-context';
+import PreviousSection from '../PreviousSectionComponent/PreviousSection';
 
 function UserForm(props) {
 	const currentAppContext = useContext(AppContext);
@@ -17,6 +18,12 @@ function UserForm(props) {
 		event.preventDefault();
 		setPassengers(passengers + 1);
 	}
+
+	function handlePrevious(event){
+		event.preventDefault();
+		currentAppContext.setStep(--currentAppContext.step);
+	}
+	
 	for (let i = 0; i < passengers; i++) {
 		users.push(
 			<UserInputs
@@ -33,6 +40,7 @@ function UserForm(props) {
 				onSubmit={clickHandler}>
 				{users}
 				<div className='passenger-submit-field'>
+					<button onClick={handlePrevious}>Previous Section</button>
 					<div className='add-passenger-container'>
 						<button
 							className='add-passenger-button'

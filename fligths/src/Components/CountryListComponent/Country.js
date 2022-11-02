@@ -25,6 +25,7 @@ function Country(props) {
 		return String.fromCodePoint(...codePoints);
 	}
 	return (
+		<>
 		<div className='countryContainer'>
 			<button
 				className='country'
@@ -32,6 +33,7 @@ function Country(props) {
 				{props.name} {getFlagEmoji(props.countryCode)}
 			</button>
 		</div>
+		</>
 	);
 }
 
