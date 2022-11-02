@@ -1,8 +1,15 @@
 import './UserForm.component.css';
 import UserInputs from './UserInputs';
-import { React, useState } from 'react';
+import { React, useState, useContext } from 'react';
+import AppContext from '../../store/app-context';
 
 function UserForm(props) {
+	const currentAppContext = useContext(AppContext);
+
+	function clickHandler(event) {
+		event.preventDefault();
+		currentAppContext.setStep(++currentAppContext.step);
+	}
 	const [passengers, setPassengers] = useState(1);
 	let users = [];
 	let price = 80;
@@ -21,7 +28,9 @@ function UserForm(props) {
 	return (
 		<div className='passenger-form-container'>
 			<h2>Insert passengers information</h2>
-			<form className='passenger-form'>
+			<form
+				className='passenger-form'
+				onSubmit={clickHandler}>
 				{users}
 				<div className='passenger-submit-field'>
 					<div className='add-passenger-container'>

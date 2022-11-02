@@ -1,8 +1,15 @@
 import Filters from './Filters';
 import ResultItem from './ResultItem';
 import './ResultsForm.component.css';
+import { React, useContext } from 'react';
+import AppContext from '../../store/app-context';
 
 function ResultsForm(props) {
+	const currentAppContext = useContext(AppContext);
+	function clickHandler(event) {
+		event.preventDefault();
+		currentAppContext.setStep(++currentAppContext.step);
+	}
 	let airlines = [];
 	let dates = [];
 
@@ -19,6 +26,7 @@ function ResultsForm(props) {
 			{props.results &&
 				props.results.map((result, index) => (
 					<ResultItem
+						onSubmit={clickHandler}
 						companyName={result.companyName.name}
 						flightNumber={result.flightNumber}
 						date={result.date}
