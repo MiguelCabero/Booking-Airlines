@@ -1,7 +1,5 @@
 package com.assesment.pricesapi.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -37,18 +35,21 @@ public class Flight {
 
 	City origin;
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JsonIgnore
+
 	City destination;
 
 	public Flight() {
 	}
 
 	public Flight(Integer cityOne, Integer cityTwo,
-			String date_selected, Integer airline) {
+			String date_selected, Integer airline, City origin,
+			City destination) {
 		this.cityOne = cityOne;
 		this.cityTwo = cityTwo;
 		this.date_selected = date_selected;
 		this.airline = airline;
+		this.origin = origin;
+		this.destination = destination;
 	}
 
 	public Flight(Integer cityOne, Integer cityTwo, Integer airline,

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.assesment.pricesapi.models.Airline;
+import com.assesment.pricesapi.models.City;
 import com.assesment.pricesapi.models.Distance;
 import com.assesment.pricesapi.models.Flight;
 import com.assesment.pricesapi.repositories.PriceRepository;
@@ -93,20 +94,21 @@ public class PriceService {
 		final List<Flight> flightList = new ArrayList<>();
 
 		for (final LocalDate date : dateList) {
-			final int airlineOrigin = cityService.getCity(origin)
-					.get().getAirline();
-			final int airlineDestination = cityService
-					.getCity(destination).get().getAirline();
+			final City cityOrigin = cityService.getCity(origin).get();
+			final City cityDestination = cityService
+					.getCity(destination).get();
 
 			if (date.getDayOfMonth() % 2 != 0) {
-				flightList.add(getFlightWithPrice(
-						new Flight(origin, destination,
-								date.toString(), airlineOrigin)));
+				flightList.add(getFlightWithPrice(new Flight(origin,
+						destination, date.toString(),
+						cityOrigin.getAirline(), cityOrigin,
+						cityDestination)));
 
 			} else {
 				flightList.add(getFlightWithPrice(new Flight(origin,
 						destination, date.toString(),
-						airlineDestination)));
+						cityDestination.getAirline(), cityOrigin,
+						cityDestination)));
 
 			}
 
