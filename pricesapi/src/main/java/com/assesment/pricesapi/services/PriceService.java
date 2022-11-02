@@ -23,27 +23,36 @@ public class PriceService {
 	@Autowired
 	DistanceService distanceService;
 
+	@Autowired
+	CityService cityService;
+
 	Optional<Airline> getById(Integer id) {
 		return priceRepository.findById(id);
 	}
 
-	public Flight getFlightWithPrice(Flight flight) throws ParseException, ClassNotFoundException {
+	public Flight getFlightWithPrice(Flight flight)
+			throws ParseException, ClassNotFoundException {
 
 		double distanceFactor = 1;
-		final double stopsFactor = 1;
+		double stopsFactor = 1;
 		final double luggageFactor = 1 + (flight.getLuggage() * 1.3);
 		double daysLeftFactor = 1;
 		double ageFactor = 0;
 
-		final Distance distance = distanceService.findDistanceBetweenCities(flight.getCityOne(), flight.getCityTwo());
+		final Distance distance = distanceService
+				.findDistanceBetweenCities(flight.getCityOne(),
+						flight.getCityTwo());
 
-		final Airline retrievedAirline = getById(flight.getAirline()).get();
+		final Airline retrievedAirline = getById(flight.getAirline())
+				.get();
 		if (retrievedAirline == null) {
 			throw new ClassNotFoundException();
 		}
 
 		if (distance.getDistance() > 2300) {
 			distanceFactor = 1.7;
+			flight.setLayover(1);
+			stopsFactor = stopsFactor + (flight.getLayover() / 5);
 		}
 
 		switch (flight.getAge_of_passenger()) {
@@ -59,13 +68,15 @@ public class PriceService {
 			ageFactor = 0;
 		}
 
-		final long diff = DateUtilities.getDaysDifference(flight.getDate_selected());
+		final long diff = DateUtilities
+				.getDaysDifference(flight.getDate_selected());
 
 		if (diff < 15) {
 			daysLeftFactor = daysLeftFactor + ((15 - diff) * 0.1);
 		}
 
-		final double finalPrice = retrievedAirline.getBasePrice() * luggageFactor * distanceFactor * stopsFactor
+		final double finalPrice = retrievedAirline.getBasePrice()
+				* luggageFactor * distanceFactor * stopsFactor
 				* daysLeftFactor * ageFactor;
 
 		flight.setPrice(finalPrice);
@@ -74,13 +85,30 @@ public class PriceService {
 
 	}
 
-	public List<Flight> generateFlights(int origin, int destination, String dateSelected)
+	public List<Flight> generateFlights(int origin, int destination,
+			String dateSelected)
 			throws ParseException, ClassNotFoundException {
-		List<LocalDate> dateList = DateUtilities.generateDates(dateSelected);
-		List<Flight> flightList = new ArrayList<>();
+		final List<LocalDate> dateList = DateUtilities
+				.generateDates(dateSelected);
+		final List<Flight> flightList = new ArrayList<>();
 
-		for (LocalDate date : dateList) {
-			flightList.add(getFlightWithPrice(new Flight(origin, destination, date.toString())));
+		for (final LocalDate date : dateList) {
+			final int airlineOrigin = cityService.getCity(origin)
+					.get().getAirline();
+			final int airlineDestination = cityService
+					.getCity(destination).get().getAirline();
+
+			if (date.getDayOfMonth() % 2 != 0) {
+				flightList.add(getFlightWithPrice(
+						new Flight(origin, destination,
+								date.toString(), airlineOrigin)));
+
+			} else {
+				flightList.add(getFlightWithPrice(new Flight(origin,
+						destination, date.toString(),
+						airlineDestination)));
+
+			}
 
 		}
 

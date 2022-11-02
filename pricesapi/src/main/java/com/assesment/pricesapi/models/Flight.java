@@ -1,28 +1,58 @@
 package com.assesment.pricesapi.models;
 
-public class Flight {
-	Integer cityOne;
-	Integer cityTwo;
-	Integer airline;
-	byte luggage = 0;
-	byte layover = 0;
-	String date_selected;
-	byte age_of_passenger = 2;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+
+@Entity
+public class Flight {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column
+	Integer ID;
+	@Column(name = "CITY_ONE")
+	Integer cityOne;
+	@Column(name = "CITY_TWO")
+	Integer cityTwo;
+	@Column
+	Integer airline;
+	@Column
+	byte luggage = 0;
+	@Column
+	int layover = 0;
+	@Column
+	String date_selected;
+	@Column
+	byte age_of_passenger = 2;
+	@Column
 	double price;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+
+	City origin;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JsonIgnore
+	City destination;
 
 	public Flight() {
 	}
 
-	public Flight(Integer cityOne, Integer cityTwo, String date_selected) {
+	public Flight(Integer cityOne, Integer cityTwo,
+			String date_selected, Integer airline) {
 		this.cityOne = cityOne;
 		this.cityTwo = cityTwo;
 		this.date_selected = date_selected;
-
-		this.airline = 1; // Cambiar
+		this.airline = airline;
 	}
 
-	public Flight(Integer cityOne, Integer cityTwo, Integer airline, byte luggage, byte layover, String date_selected,
+	public Flight(Integer cityOne, Integer cityTwo, Integer airline,
+			byte luggage, byte layover, String date_selected,
 			byte age_of_passenger) {
 		super();
 		this.cityOne = cityOne;
@@ -66,12 +96,12 @@ public class Flight {
 		this.luggage = luggage;
 	}
 
-	public byte getLayover() {
+	public int getLayover() {
 		return layover;
 	}
 
-	public void setLayover(byte layover) {
-		this.layover = layover;
+	public void setLayover(int i) {
+		this.layover = i;
 	}
 
 	public String getDate_selected() {
@@ -98,11 +128,29 @@ public class Flight {
 		this.price = price;
 	}
 
+	public City getOrigin() {
+		return origin;
+	}
+
+	public void setOrigin(City origin) {
+		this.origin = origin;
+	}
+
+	public City getDestination() {
+		return destination;
+	}
+
+	public void setDestination(City destination) {
+		this.destination = destination;
+	}
+
 	@Override
 	public String toString() {
-		return "Flight [cityOne=" + cityOne + ", cityTwo=" + cityTwo + ", airline=" + airline + ", luggage=" + luggage
-				+ ", layover=" + layover + ", date_selected=" + date_selected + ", age_of_passenger=" + age_of_passenger
-				+ "]";
+		return "Flight [cityOne=" + cityOne + ", cityTwo=" + cityTwo
+				+ ", airline=" + airline + ", luggage=" + luggage
+				+ ", layover=" + layover + ", date_selected="
+				+ date_selected + ", age_of_passenger="
+				+ age_of_passenger + "]";
 	}
 
 }
