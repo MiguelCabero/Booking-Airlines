@@ -1,6 +1,9 @@
 package com.assesment.pricesapi.services;
 
 import java.text.ParseException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +27,7 @@ public class PriceService {
 		return priceRepository.findById(id);
 	}
 
-	public Flight getFlightWithPrice(Flight flight)
-			throws ParseException, ClassNotFoundException {
+	public Flight getFlightWithPrice(Flight flight) throws ParseException, ClassNotFoundException {
 
 		double distanceFactor = 1;
 		final double stopsFactor = 1;
@@ -33,12 +35,9 @@ public class PriceService {
 		double daysLeftFactor = 1;
 		double ageFactor = 0;
 
-		final Distance distance = distanceService
-				.findDistanceBetweenCities(flight.getCityOne(),
-						flight.getCityTwo());
+		final Distance distance = distanceService.findDistanceBetweenCities(flight.getCityOne(), flight.getCityTwo());
 
-		final Airline retrievedAirline = getById(flight.getAirline())
-				.get();
+		final Airline retrievedAirline = getById(flight.getAirline()).get();
 		if (retrievedAirline == null) {
 			throw new ClassNotFoundException();
 		}
@@ -60,21 +59,32 @@ public class PriceService {
 			ageFactor = 0;
 		}
 
-		final long diff = DateUtilities
-				.getDaysDifference(flight.getDate_selected());
+		final long diff = DateUtilities.getDaysDifference(flight.getDate_selected());
 
 		if (diff < 15) {
 			daysLeftFactor = daysLeftFactor + ((15 - diff) * 0.1);
 		}
 
-		final double finalPrice = retrievedAirline.getBasePrice()
-				* luggageFactor * distanceFactor * stopsFactor
+		final double finalPrice = retrievedAirline.getBasePrice() * luggageFactor * distanceFactor * stopsFactor
 				* daysLeftFactor * ageFactor;
 
 		flight.setPrice(finalPrice);
 
 		return flight;
 
+	}
+
+	public List<Flight> generateFlights(int origin, int destination, String dateSelected)
+			throws ParseException, ClassNotFoundException {
+		List<LocalDate> dateList = DateUtilities.generateDates(dateSelected);
+		List<Flight> flightList = new ArrayList<>();
+
+		for (LocalDate date : dateList) {
+			flightList.add(getFlightWithPrice(new Flight(origin, destination, date.toString())));
+
+		}
+
+		return flightList;
 	}
 
 }

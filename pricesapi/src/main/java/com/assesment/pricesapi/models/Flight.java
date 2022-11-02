@@ -4,18 +4,25 @@ public class Flight {
 	Integer cityOne;
 	Integer cityTwo;
 	Integer airline;
-	byte luggage;
-	byte layover;
+	byte luggage = 0;
+	byte layover = 0;
 	String date_selected;
-	byte age_of_passenger;
+	byte age_of_passenger = 2;
 
 	double price;
 
 	public Flight() {
 	}
 
-	public Flight(Integer cityOne, Integer cityTwo, Integer airline,
-			byte luggage, byte layover, String date_selected,
+	public Flight(Integer cityOne, Integer cityTwo, String date_selected) {
+		this.cityOne = cityOne;
+		this.cityTwo = cityTwo;
+		this.date_selected = date_selected;
+
+		this.airline = 1; // Cambiar
+	}
+
+	public Flight(Integer cityOne, Integer cityTwo, Integer airline, byte luggage, byte layover, String date_selected,
 			byte age_of_passenger) {
 		super();
 		this.cityOne = cityOne;
@@ -93,11 +100,9 @@ public class Flight {
 
 	@Override
 	public String toString() {
-		return "Flight [cityOne=" + cityOne + ", cityTwo=" + cityTwo
-				+ ", airline=" + airline + ", luggage=" + luggage
-				+ ", layover=" + layover + ", date_selected="
-				+ date_selected + ", age_of_passenger="
-				+ age_of_passenger + "]";
+		return "Flight [cityOne=" + cityOne + ", cityTwo=" + cityTwo + ", airline=" + airline + ", luggage=" + luggage
+				+ ", layover=" + layover + ", date_selected=" + date_selected + ", age_of_passenger=" + age_of_passenger
+				+ "]";
 	}
 
 }
