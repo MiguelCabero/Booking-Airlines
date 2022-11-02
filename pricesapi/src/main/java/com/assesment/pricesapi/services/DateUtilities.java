@@ -1,4 +1,4 @@
-package com.assesment.pricesapi.priceservice;
+package com.assesment.pricesapi.services;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

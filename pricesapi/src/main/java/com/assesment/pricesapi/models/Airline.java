@@ -1,4 +1,4 @@
-package com.assesment.pricesapi.airlinemodel;
+package com.assesment.pricesapi.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

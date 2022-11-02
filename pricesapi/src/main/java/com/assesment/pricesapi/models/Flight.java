@@ -1,26 +1,46 @@
-package com.assesment.pricesapi.airlinemodel;
+package com.assesment.pricesapi.models;
 
-public class Petition {
+public class Flight {
+	Integer cityOne;
+	Integer cityTwo;
 	Integer airline;
 	byte luggage;
-	double distance;
 	byte layover;
 	String date_selected;
 	byte age_of_passenger;
 
-	public Petition() {
+	double price;
+
+	public Flight() {
 	}
 
-	public Petition(Integer airline, byte luggage, double distance,
-			byte layover, String date_selected,
+	public Flight(Integer cityOne, Integer cityTwo, Integer airline,
+			byte luggage, byte layover, String date_selected,
 			byte age_of_passenger) {
 		super();
+		this.cityOne = cityOne;
+		this.cityTwo = cityTwo;
 		this.airline = airline;
 		this.luggage = luggage;
-		this.distance = distance;
 		this.layover = layover;
 		this.date_selected = date_selected;
 		this.age_of_passenger = age_of_passenger;
+	}
+
+	public Integer getCityOne() {
+		return cityOne;
+	}
+
+	public void setCityOne(Integer cityOne) {
+		this.cityOne = cityOne;
+	}
+
+	public Integer getCityTwo() {
+		return cityTwo;
+	}
+
+	public void setCityTwo(Integer cityTwo) {
+		this.cityTwo = cityTwo;
 	}
 
 	public Integer getAirline() {
@@ -37,14 +57,6 @@ public class Petition {
 
 	public void setLuggage(byte luggage) {
 		this.luggage = luggage;
-	}
-
-	public double getDistance() {
-		return distance;
-	}
-
-	public void setDistance(double distance) {
-		this.distance = distance;
 	}
 
 	public byte getLayover() {
@@ -71,12 +83,21 @@ public class Petition {
 		this.age_of_passenger = age_of_passenger;
 	}
 
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
 	@Override
 	public String toString() {
-		return "Petition [airline=" + airline + ", luggage=" + luggage
-				+ ", distance=" + distance + ", layover=" + layover
-				+ ", date_selected=" + date_selected
-				+ ", age_of_passenger=" + age_of_passenger + "]";
+		return "Flight [cityOne=" + cityOne + ", cityTwo=" + cityTwo
+				+ ", airline=" + airline + ", luggage=" + luggage
+				+ ", layover=" + layover + ", date_selected="
+				+ date_selected + ", age_of_passenger="
+				+ age_of_passenger + "]";
 	}
 
 }
