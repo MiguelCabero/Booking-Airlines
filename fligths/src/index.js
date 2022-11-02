@@ -5,13 +5,16 @@ import reportWebVitals from './reportWebVitals';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { AppContextProvider } from './store/app-context';
+import { TripContextProvider } from './store/trip-context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<AppContextProvider>
-		<BrowserRouter>
-			<App />
-		</BrowserRouter>
+		<TripContextProvider>
+			<BrowserRouter>
+				<App />
+			</BrowserRouter>
+		</TripContextProvider>
 	</AppContextProvider>
 );
 

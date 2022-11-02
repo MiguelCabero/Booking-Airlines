@@ -1,10 +1,15 @@
 import './Country.component.css';
 import { React, useContext } from 'react';
 import AppContext from '../../store/app-context';
+import TripContext from '../../store/trip-context';
 function Country(props) {
 	const currentAppContext = useContext(AppContext);
+	const currentTripContext = useContext(TripContext);
 
 	function clickHandler() {
+		currentTripContext.setOrigin(
+			currentTripContext.availableCountries[props.cityIndex]
+		);
 		currentAppContext.setStep(++currentAppContext.step);
 	}
 	function getFlagEmoji(countryCode) {
