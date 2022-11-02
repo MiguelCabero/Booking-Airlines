@@ -1,0 +1,29 @@
+.countryContainer {
+	width: 70%;
+	background-color: var(--primary-color);
+	display: flex;
+	border-radius: 0.5rem;
+	margin-top: 0.5rem;
+	pointer-events: none;
+}
+
+.country {
+	width: 100%;
+	background: none;
+	border: none;
+	font-size: 14px;
+	color: white;
+	pointer-events: auto;
+	padding: 1rem;
+	border-radius: 0.5rem;
+}
+
+.country:hover {
+	cursor: pointer;
+}
+
+.country:active {
+	background: white;
+	color: var(--primary-color);
+	border: 1px solid var(--primary-color);
+}

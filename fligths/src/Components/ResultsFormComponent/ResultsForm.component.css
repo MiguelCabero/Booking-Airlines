@@ -1,0 +1,9 @@
+.results-container {
+	width: 75vw;
+	height: auto;
+	margin: 0 auto;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	border: 1px solid var(--primary-color);
+	margin-bottom: 2rem;
+}

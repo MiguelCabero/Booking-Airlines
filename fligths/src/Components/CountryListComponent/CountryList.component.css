@@ -1,0 +1,13 @@
+.countryList {
+	width: 20vw;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	margin: 0 auto;
+	border: 1px solid var(--primary-color);
+	margin-top: 5rem;
+}
