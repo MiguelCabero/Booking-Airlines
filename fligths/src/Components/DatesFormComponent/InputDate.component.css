@@ -1,0 +1,35 @@
+.input-date,
+.checkbox-toggle {
+	display: flex;
+	padding: 1rem;
+}
+
+.input-date {
+	justify-content: space-around;
+}
+
+.input-date > label {
+	border-bottom: 1px solid var(--primary-color);
+}
+
+.input-date > input {
+	appearance: none;
+	color: #1d1d1d;
+	font-family: “Helvetica”, arial, sans-serif;
+	font-size: 14px;
+	border: 1px solid var(--primary-color);
+	padding: 4px;
+	display: inline-block;
+	visibility: visible;
+	width: 140px;
+}
+.input-date > input:focus {
+	color: var(--primary-color);
+	background-color: #ffffff;
+	outline: 0;
+	box-shadow: 0 0 0 0.2rem rgba(138, 43, 226, 0.2);
+}
+
+.input-date > input:hover {
+	cursor: pointer;
+}

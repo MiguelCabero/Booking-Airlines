@@ -1,5 +1,6 @@
 package com.assesment.pricesapi.pricecontroller;
 
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,12 +23,12 @@ public class PriceController {
 
 	@PostMapping(path = "/api/prices")
 	public ResponseEntity<Object> getFinalPrice(
-			@RequestBody Petition petition) {
+			@RequestBody Petition petition) throws ParseException {
 
 		final double finalprice = priceService.getPrice(
 				petition.getAirline(), petition.getLuggage(),
 				petition.getDistance(), petition.getLayover(),
-				petition.getDays_left(),
+				petition.getDate_selected(),
 				petition.getAge_of_passenger());
 
 		final Map<String, Double> responseMap = new HashMap<String, Double>();
