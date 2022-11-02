@@ -3,13 +3,17 @@ import ResultItem from './ResultItem';
 import './ResultsForm.component.css';
 import { React, useContext } from 'react';
 import AppContext from '../../store/app-context';
+import TripContext from '../../store/trip-context';
 
 function ResultsForm(props) {
 	const currentAppContext = useContext(AppContext);
+	const currentTripContext = useContext(TripContext);
 	function clickHandler(event) {
 		event.preventDefault();
 		currentAppContext.setStep(++currentAppContext.step);
 	}
+
+	console.log(currentTripContext);
 	let airlines = [];
 	let dates = [];
 

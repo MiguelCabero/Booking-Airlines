@@ -3,14 +3,22 @@ import './DatesForm.component.css';
 import InputDate from './InputDate';
 import TripField from './TripField';
 import AppContext from '../../store/app-context';
-import { React, useContext } from 'react';
+import TripContext from '../../store/trip-context';
+import { React, useContext, useState } from 'react';
 function DatesForm(props) {
 	const currentAppContext = useContext(AppContext);
+	const currentTripContext = useContext(TripContext);
+
+	const [checked, setChecked] = useState(props.checked);
+	function handleToggle() {
+		setChecked(!checked);
+	}
 
 	function clickHandler(event) {
 		event.preventDefault();
 		currentAppContext.setStep(++currentAppContext.step);
 	}
+
 	return (
 		<div className='form-container'>
 			<h2>Select dates</h2>
@@ -27,14 +35,18 @@ function DatesForm(props) {
 						action='trip-date'
 					/>
 
-					<InputDate
-						message='Select back date'
-						action='back-date'
-					/>
+					{checked && (
+						<InputDate
+							message='Select back date'
+							action='back-date'
+						/>
+					)}
 
 					<ToggleCheck
 						label='Roundtrip'
 						action='roundtrip'
+						checked={checked}
+						onChange={handleToggle}
 					/>
 				</div>
 				<div className='submit-field'>

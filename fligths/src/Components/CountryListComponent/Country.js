@@ -5,11 +5,16 @@ import TripContext from '../../store/trip-context';
 function Country(props) {
 	const currentAppContext = useContext(AppContext);
 	const currentTripContext = useContext(TripContext);
+	console.log(currentTripContext);
 
 	function clickHandler() {
-		currentTripContext.setOrigin(
-			currentTripContext.availableCountries[props.cityIndex]
+		let selected = currentTripContext.trip.availableCountries.find(
+			(city) => city.name == props.name
 		);
+		props.action == 'origin'
+			? currentTripContext.trip.setOrigin(selected)
+			: currentTripContext.trip.setDestination(selected);
+
 		currentAppContext.setStep(++currentAppContext.step);
 	}
 	function getFlagEmoji(countryCode) {

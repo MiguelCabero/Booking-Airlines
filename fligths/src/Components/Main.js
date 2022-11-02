@@ -4,16 +4,19 @@ import ResultsForm from './ResultsFormComponent/ResultsForm';
 import UserForm from './UserInfoComponent/UserForm';
 import { React, useContext } from 'react';
 import AppContext from '../store/app-context';
+import TripContext from '../store/trip-context';
 const Main = (props) => {
 	const currentAppContext = useContext(AppContext);
+	const tripContext = useContext(TripContext);
 	return (
 		<div>
 			{currentAppContext.step == 1 && <CountryList action={'origin'} />}
 			{currentAppContext.step == 2 && <CountryList action={'destination'} />}
 			{currentAppContext.step == 3 && (
 				<DatesForm
-					origin='Seville'
-					destination='Barcelona'
+					origin={tripContext.trip.selectedOrigin.name}
+					destination={tripContext.trip.selectedDestination.name}
+					checked={true}
 				/>
 			)}
 			{currentAppContext.step == 4 && (

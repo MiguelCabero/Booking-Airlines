@@ -1,4 +1,5 @@
 import './ToggleCheck.component.css';
+import { React, useState } from 'react';
 
 function ToggleCheck(props) {
 	return (
@@ -7,6 +8,8 @@ function ToggleCheck(props) {
 				<input
 					type='checkbox'
 					name={`${props.action}${props.index}`}
+					checked={props.checked}
+					onChange={props.onChange}
 				/>
 				<div className='toggler-slider'>
 					<div className='toggler-knob' />

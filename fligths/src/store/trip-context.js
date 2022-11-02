@@ -1,25 +1,48 @@
 import { createContext, useState } from 'react';
 
-const TripContext = createContext([
-	{
+let initialTripContext = JSON.parse(
+	window.localStorage.getItem('trip-context')
+) || {
+	trip: {
 		availableCountries: [],
 		selectedOrigin: {},
 		selectedDestination: {},
-		selectedDate: '',
+		selectedDate: new Date().toISOString().split('T')[0],
 		setOrigin: (origin) => {},
 		setDestination: (destination) => {},
 		setDate: (date) => {},
 		setCities: (date) => {},
 	},
-]);
+	backTrip: {
+		selectedOrigin: {},
+		selectedDestination: {},
+		selectedDate: '',
+	},
+	setBackTrip: (backTrip) => {},
+};
+
+const TripContext = createContext(initialTripContext);
 
 export function TripContextProvider(props) {
-	const [currentAvailableCities, setCurrentAvailableCities] = useState([]);
-	const [currentOrigin, setCurrentOrigin] = useState({});
-	const [currentDestination, setCurrentDestination] = useState({});
-	const [currentSelectedDate, setCurrentSelectedDate] = useState(
-		new Date().toISOString().split('T')[0]
+	const [currentAvailableCities, setCurrentAvailableCities] = useState(
+		initialTripContext.trip.availableCountries
 	);
+	const [currentOrigin, setCurrentOrigin] = useState(
+		initialTripContext.trip.selectedOrigin
+	);
+	const [currentDestination, setCurrentDestination] = useState(
+		initialTripContext.trip.selectedDestination
+	);
+	const [currentSelectedDate, setCurrentSelectedDate] = useState(
+		initialTripContext.trip.selectedDate
+	);
+	const [currentBackTrip, setCurrentBackTrip] = useState(
+		initialTripContext.backTrip
+	);
+
+	function backTripHandler(backTrip) {
+		setCurrentBackTrip(backTrip);
+	}
 
 	function setOriginHandler(origin) {
 		setCurrentOrigin(origin);
@@ -38,15 +61,21 @@ export function TripContextProvider(props) {
 	}
 
 	const context = {
-		availableCountries: currentAvailableCities,
-		selectedOrigin: currentOrigin,
-		selectedDestination: currentDestination,
-		selectedDate: currentSelectedDate,
-		setOrigin: setOriginHandler,
-		setDestination: setDestinationHandler,
-		setDate: setCurrentDateHandler,
-		setCities: setCitiesHandler,
+		trip: {
+			availableCountries: currentAvailableCities,
+			selectedOrigin: currentOrigin,
+			selectedDestination: currentDestination,
+			selectedDate: currentSelectedDate,
+			setOrigin: setOriginHandler,
+			setDestination: setDestinationHandler,
+			setDate: setCurrentDateHandler,
+			setCities: setCitiesHandler,
+		},
+		backTrip: currentBackTrip,
+		setBackTrip: backTripHandler,
 	};
+
+	window.localStorage.setItem('trip-context', JSON.stringify(context));
 	return (
 		<TripContext.Provider value={context}>
 			{props.children}

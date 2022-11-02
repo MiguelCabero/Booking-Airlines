@@ -6,9 +6,9 @@ import TripContext from '../../store/trip-context';
 
 function CountryList(props) {
 	const tripContext = useContext(TripContext);
-
+	console.log(tripContext);
 	useEffect(() => {
-		if (tripContext.availableCountries.length === 0) {
+		if (tripContext.trip.availableCountries.length === 0) {
 			callCities();
 		}
 	}, []);
@@ -21,7 +21,7 @@ function CountryList(props) {
 				},
 			})
 			.then((response) => {
-				tripContext.setCities(response.data);
+				tripContext.trip.setCities(response.data);
 			});
 	}
 
@@ -29,14 +29,14 @@ function CountryList(props) {
 		<div className='countryList'>
 			<h2>Select your {props.action}</h2>
 
-			{tripContext.availableCountries
-				.filter((city) => city != tripContext.selectedOrigin)
+			{tripContext.trip.availableCountries
+				.filter((city) => city.name != tripContext.trip.selectedOrigin.name)
 				.map((city, index) => (
 					<Country
 						name={city.name}
 						countryCode={city.country}
 						key={index}
-						cityIndex={index}
+						action={props.action}
 					/>
 				))}
 		</div>
