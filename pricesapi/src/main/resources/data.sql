@@ -1,0 +1,1 @@
+insert into airlines(ID, name, included_luggage, base_price) values (1, 'Ryanair', 0, 70);
