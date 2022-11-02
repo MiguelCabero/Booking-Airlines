@@ -5,20 +5,21 @@ public class Petition {
 	byte luggage;
 	double distance;
 	byte layover;
-	int days_left;
+	String date_selected;
 	byte age_of_passenger;
 
 	public Petition() {
 	}
 
 	public Petition(Integer airline, byte luggage, double distance,
-			byte layover, int days_left, byte age_of_passenger) {
+			byte layover, String date_selected,
+			byte age_of_passenger) {
 		super();
 		this.airline = airline;
 		this.luggage = luggage;
 		this.distance = distance;
 		this.layover = layover;
-		this.days_left = days_left;
+		this.date_selected = date_selected;
 		this.age_of_passenger = age_of_passenger;
 	}
 
@@ -54,12 +55,12 @@ public class Petition {
 		this.layover = layover;
 	}
 
-	public int getDays_left() {
-		return days_left;
+	public String getDate_selected() {
+		return date_selected;
 	}
 
-	public void setDays_left(int days_left) {
-		this.days_left = days_left;
+	public void setDate_selected(String date_selected) {
+		this.date_selected = date_selected;
 	}
 
 	public byte getAge_of_passenger() {
@@ -74,8 +75,8 @@ public class Petition {
 	public String toString() {
 		return "Petition [airline=" + airline + ", luggage=" + luggage
 				+ ", distance=" + distance + ", layover=" + layover
-				+ ", days_left=" + days_left + ", age_of_passenger="
-				+ age_of_passenger + "]";
+				+ ", date_selected=" + date_selected
+				+ ", age_of_passenger=" + age_of_passenger + "]";
 	}
 
 }

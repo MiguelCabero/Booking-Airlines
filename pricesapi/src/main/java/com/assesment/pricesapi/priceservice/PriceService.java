@@ -1,5 +1,6 @@
 package com.assesment.pricesapi.priceservice;
 
+import java.text.ParseException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,8 @@ public class PriceService {
 	}
 
 	public double getPrice(Integer id, byte luggage, Double distance,
-			byte layover, int days_left, byte age_of_passenger) {
+			byte layover, String date_selected, byte age_of_passenger)
+			throws ParseException {
 
 		double distanceFactor = 1;
 		final double stopsFactor = 1;
@@ -49,9 +51,11 @@ public class PriceService {
 			ageFactor = 0;
 		}
 
-		if (days_left < 15) {
-			daysLeftFactor = daysLeftFactor
-					+ ((15 - days_left) * 0.1);
+		final long diff = DateUtilities
+				.getDaysDifference(date_selected);
+
+		if (diff < 15) {
+			daysLeftFactor = daysLeftFactor + ((15 - diff) * 0.1);
 		}
 
 		final double finalPrice = retrievedAirline.getBasePrice()
