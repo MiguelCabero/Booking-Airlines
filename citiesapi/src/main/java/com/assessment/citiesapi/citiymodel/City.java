@@ -9,19 +9,28 @@ import jakarta.persistence.Id;
 @Entity(name = "cities")
 public class City {
 
+	@Column
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+	@Column
 	private String name;
-	private String country;
-	@Column(name = "airline")
-	private int airlineId;
 
-	public City(Integer id, String name, String country, int airlineId) {
+	@Column
+	private String country;
+	@Column
+	private Integer airline;
+
+	public City() {
+	}
+
+	public City(Integer id, String name, String country,
+			Integer airline) {
+		super();
 		this.id = id;
 		this.name = name;
 		this.country = country;
-		this.airlineId = airlineId;
+		this.airline = airline;
 	}
 
 	public Integer getId() {
@@ -48,17 +57,18 @@ public class City {
 		this.country = country;
 	}
 
-	public int getAirlineId() {
-		return airlineId;
+	public Integer getAirline() {
+		return airline;
 	}
 
-	public void setAirlineId(int airlineId) {
-		this.airlineId = airlineId;
+	public void setAirline(Integer airline) {
+		this.airline = airline;
 	}
 
 	@Override
 	public String toString() {
-		return "City [id=" + id + ", name=" + name + ", country=" + country + ", airlineId=" + airlineId + "]";
+		return "City [id=" + id + ", name=" + name + ", country="
+				+ country + ", airline=" + airline + "]";
 	}
 
 }
