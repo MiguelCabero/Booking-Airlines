@@ -1,7 +1,7 @@
 import Filters from './Filters';
 import ResultItem from './ResultItem';
 import './ResultsForm.component.css';
-import { React, useContext, useEffect, useRef } from 'react';
+import { React, useContext, useEffect, useRef, useState } from 'react';
 import AppContext from '../../store/app-context';
 import TripContext from '../../store/trip-context';
 import axios from 'axios';
@@ -16,24 +16,25 @@ function ResultsForm(props) {
 
 	let filters = currentTripContext.trip.results;
 
-	let filteredResults = [...currentTripContext.trip.results];
+	const [filteredResults, setFilteredResults] = useState([
+		...currentTripContext.trip.results,
+	]);
 
 	function filterHandler() {
-		filteredResults = [...currentTripContext.trip.results];
+		let filtersApplied = [...currentTripContext.trip.results];
 		if (dateFilter.current.value != null) {
-			filteredResults = filteredResults.filter((result) => {
-				result.date_selected == dateFilter.current.value;
-			});
+			filtersApplied = filtersApplied.filter(
+				(result) => result.date_selected == dateFilter.current.value
+			);
 		}
 		if (companyFilter.current.value != null) {
-			filteredResults = filteredResults.filter(
-				(result) => result.airlineName == companyFilter.current.value
-			);
 		}
 		if (lugaggeFilter != null) {
 		}
 		if (layoverFilter !== null) {
 		}
+		setFilteredResults(filtersApplied);
+		console.log(filtersApplied);
 	}
 
 	useEffect(() => {
@@ -85,8 +86,9 @@ function ResultsForm(props) {
 				companyFilterReference={companyFilter}
 			/>
 			{currentTripContext.trip.results &&
-				filteredResults.map((result, index) => (
-					<ResultItem
+				filteredResults.map((result, index) =>
+					console.log(result)
+					/*<ResultItem
 						onSubmit={clickHandler}
 						companyName={result.airlineName}
 						flightNumber={Math.random().toString(36).slice(2)}
@@ -100,8 +102,8 @@ function ResultsForm(props) {
 						price={result.price}
 						key={index}
 						index={index}
-					/>
-				))}
+					/>*/
+				)}
 		</div>
 	);
 }
