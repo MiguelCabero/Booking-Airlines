@@ -26,13 +26,13 @@ function Country(props) {
 	}
 	return (
 		<>
-		<div className='countryContainer'>
-			<button
-				className='country'
-				onClick={clickHandler}>
-				{props.name} {getFlagEmoji(props.countryCode)}
-			</button>
-		</div>
+			<div className='countryContainer'>
+				<button
+					className='country'
+					onClick={clickHandler}>
+					{props.name} {getFlagEmoji(props.countryCode)}
+				</button>
+			</div>
 		</>
 	);
 }
