@@ -15,7 +15,7 @@ function Filters(props) {
 					id='company-filter'
 					ref={props.companyFilterReference}
 					onChange={props.action}>
-					<option value={null}>-- Select airline --</option>
+					<option value={''}>-- Select airline --</option>
 					{props.airlines &&
 						set.map((airline, index) => (
 							<option
@@ -31,7 +31,7 @@ function Filters(props) {
 					id='date-filter'
 					ref={props.dateFilterReference}
 					onChange={props.action}>
-					<option value={null}>-- Select date --</option>
+					<option value={''}>-- Select date --</option>
 					{props.dates &&
 						props.dates.map((date, index) => (
 							<option

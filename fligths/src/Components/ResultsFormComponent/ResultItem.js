@@ -14,7 +14,7 @@ function ResultItem(props) {
 						<input
 							type='text'
 							name={`${props.companyName}${props.index}`}
-							defaultValue={`${props.companyName}`}
+							value={`${props.companyName}`}
 							className='result-item-element'
 							readOnly
 						/>
@@ -26,24 +26,25 @@ function ResultItem(props) {
 						<input
 							type='text'
 							name={`${props.flightNumber}${props.index}`}
-							defaultValue={`${props.flightNumber}`}
+							value={`${props.flightNumber}`}
 							className='result-item-element'
 							readOnly
 						/>
 					</div>
+					{console.log(props)}
 					<div className='dateInfo'>
 						<label htmlFor={`${props.date}${props.index}`}>Date</label>
 						<div className='fligth-datetime'>
 							<input
 								type='text'
 								name={`${props.date}${props.index}`}
-								defaultValue={`${props.date}`}
+								value={`${props.date}`}
 								readOnly
 							/>
 							<input
 								type='text'
 								name={`${props.time}${props.index}`}
-								defaultValue={`${props.time}`}
+								value={`${props.time}`}
 								readOnly
 							/>
 						</div>
@@ -53,7 +54,7 @@ function ResultItem(props) {
 						<input
 							type='text'
 							name={`${props.duration}${props.index}`}
-							defaultValue={`${props.duration}`}
+							value={`${props.duration}`}
 							className='result-item-element'
 							readOnly
 						/>
@@ -64,7 +65,7 @@ function ResultItem(props) {
 							type='text'
 							name={`${props.layover}${props.index}`}
 							data={props.layover}
-							defaultValue={`${props.layoverText}`}
+							value={`${props.layoverText}`}
 							className='result-item-element'
 							readOnly
 						/>
@@ -75,7 +76,7 @@ function ResultItem(props) {
 							type='text'
 							data={props.lugagge}
 							name={`${props.lugagge}${props.index}`}
-							defaultValue={`${props.lugaggeText}`}
+							value={`${props.lugaggeText}`}
 							className='result-item-element'
 							readOnly
 						/>
@@ -85,7 +86,7 @@ function ResultItem(props) {
 						<input
 							type='text'
 							name={`${props.price}${props.index}`}
-							defaultValue={`${props.price.toFixed(2)} €`}
+							value={`${props.price.toFixed(2)} €`}
 							className='result-item-element'
 							readOnly
 						/>
