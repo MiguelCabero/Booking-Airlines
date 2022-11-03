@@ -3,38 +3,52 @@ import UserInputs from './UserInputs';
 import { React, useState, useContext } from 'react';
 import AppContext from '../../store/app-context';
 import TripContext from '../../store/trip-context';
+import PassengersContext from '../../store/passengers-context';
 
 function UserForm(props) {
 	const currentAppContext = useContext(AppContext);
 	const currentTripContext = useContext(TripContext);
+	const currentPassengersContext = useContext(PassengersContext);
+	let users = currentPassengersContext.passengers;
+	const passengerBase = {
+		name: '',
+		surname: '',
+		nationality: '',
+		identification: '',
+		age: 2,
+		bags: 0,
+	};
 
 	function clickHandler(event) {
 		event.preventDefault();
 		currentAppContext.setStep(++currentAppContext.step);
 	}
-	const [passengers, setPassengers] = useState(1);
-	let users = [];
-	let price = 80;
 	function handleClick(event) {
 		event.preventDefault();
-		setPassengers(passengers + 1);
+		users.push(structuredClone(passengerBase));
+		console.log(currentPassengersContext.passengers);
+		currentPassengersContext.setPassengers([...users]);
 	}
 
-	for (let i = 0; i < passengers; i++) {
-		users.push(
-			<UserInputs
-				key={i}
-				index={i}
-			/>
-		);
-	}
+	/*function handleUpdate(event) {
+			event.preventDefault();
+			users.splice(event.target.value, 1);
+			currentPassengersContext.setPassengers([...users]);
+		}*/
+
 	return (
 		<div className='passenger-form-container'>
 			<h2>Insert passengers information</h2>
 			<form
 				className='passenger-form'
 				onSubmit={clickHandler}>
-				{users}
+				{currentPassengersContext.passengers.map((passenger, index) => (
+					<UserInputs
+						key={index}
+						index={index}
+						usersState={users}
+					/>
+				))}
 				<div className='passenger-submit-field'>
 					<div className='add-passenger-container'>
 						<button

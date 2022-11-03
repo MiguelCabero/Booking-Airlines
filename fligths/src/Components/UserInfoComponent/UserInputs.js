@@ -1,10 +1,50 @@
-import { React, useContext } from 'react';
+import { React, useContext, useRef, useState, useEffect } from 'react';
 import ToggleCheck from '../ToggleCheck';
 import './UserInputs.component.css';
 import TripContext from '../../store/trip-context';
+import PassengersContext from '../../store/passengers-context';
 
-function UserForm(props) {
+function UserInputs(props) {
 	const currentTripContext = useContext(TripContext);
+	const currentPassengersContext = useContext(PassengersContext);
+	const [bags, setBags] = useState(
+		currentPassengersContext.passengers[props.index].bags == 1
+	);
+	const nameRef = useRef(null);
+	const surNameRef = useRef(null);
+	const nationalityRef = useRef(null);
+	const identificationRef = useRef(null);
+	const ageRef = useRef(null);
+	let refBags = currentPassengersContext.passengers[props.index].bags;
+
+	const handleBags = (event) => {
+		refBags == 0 ? (refBags = 1) : (refBags = 0);
+		props.usersState[props.index] = {
+			...props.usersState[props.index],
+			bags: refBags,
+		};
+		currentPassengersContext.setPassengers([...props.usersState]);
+		setBags((prevState) => {
+			prevState == 0 ? (prevState = 1) : (prevState = 0);
+			return prevState;
+		});
+	};
+	const handleChange = (event) => {
+		props.usersState[props.index] = {
+			...props.usersState[props.index],
+			age: ageRef.current.value,
+		};
+
+		currentPassengersContext.setPassengers([...props.usersState]);
+	};
+
+	function handleDelete(event) {
+		event.preventDefault();
+		props.usersState.splice(event.target.value, 1);
+		currentPassengersContext.setPassengers([...props.usersState]);
+		window.location.reload();
+	}
+
 	return (
 		<div className='passenger-inputs-field'>
 			<div className='input-element'>
@@ -12,6 +52,7 @@ function UserForm(props) {
 				<input
 					type='text'
 					name={`user-name${props.index}`}
+					ref={nameRef}
 				/>
 			</div>
 			<div className='input-element'>
@@ -19,6 +60,7 @@ function UserForm(props) {
 				<input
 					type='text'
 					name={`user-surname${props.index}`}
+					ref={surNameRef}
 				/>
 			</div>
 			<div className='input-element'>
@@ -27,6 +69,7 @@ function UserForm(props) {
 					type='text'
 					name={`user-nationality${props.index}`}
 					list={`datalist-nationalities${props.index}`}
+					ref={nationalityRef}
 				/>
 				<datalist id={`datalist-nationalities${props.index}`}>
 					<select name={`nationality-select${props.index}`}>
@@ -236,6 +279,7 @@ function UserForm(props) {
 					type='text'
 					name={`user-identification${props.index}`}
 					required
+					ref={identificationRef}
 				/>
 			</div>
 			<div className='input-element'>
@@ -243,28 +287,40 @@ function UserForm(props) {
 				<select
 					name={`passenger-age${props.index}`}
 					id='company-filter'
-					defaultValue={2}>
+					defaultValue={currentPassengersContext.passengers[props.index].age}
+					ref={ageRef}
+					onChange={handleChange}>
 					<option value={0}>Less than 2 years</option>
 					<option value={1}>Between 2 and 9 years</option>
 					<option value={2}>More than 9 years</option>
 				</select>
 			</div>
-			{currentTripContext.trip.luggage == 1 ? <ToggleCheck
-				label='Bags'
-				action='Bags'
-				index={props.index}
-				checked={true}
-			
-			/> : <ToggleCheck
-			label='Bags'
-			action='Bags'
-			index={props.index}
-			
-		
-		/>
-				}
+			{currentTripContext.trip.luggage == 1 ? (
+				<ToggleCheck
+					label='Bags'
+					action='Bags'
+					index={props.index}
+					checked={true}
+				/>
+			) : (
+				<ToggleCheck
+					label='Bags'
+					action='Bags'
+					checked={bags == 1}
+					index={props.index}
+					onChange={handleBags}
+				/>
+			)}
+
+			<div>
+				<button
+					onClick={handleDelete}
+					value={props.index}>
+					Delete
+				</button>
+			</div>
 		</div>
 	);
 }
 
-export default UserForm;
+export default UserInputs;

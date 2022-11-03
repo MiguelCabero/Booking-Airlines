@@ -6,14 +6,17 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { AppContextProvider } from './store/app-context';
 import { TripContextProvider } from './store/trip-context';
+import { PassengersContextProvider } from './store/passengers-context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<AppContextProvider>
 		<TripContextProvider>
-			<BrowserRouter>
-				<App />
-			</BrowserRouter>
+			<PassengersContextProvider>
+				<BrowserRouter>
+					<App />
+				</BrowserRouter>
+			</PassengersContextProvider>
 		</TripContextProvider>
 	</AppContextProvider>
 );
