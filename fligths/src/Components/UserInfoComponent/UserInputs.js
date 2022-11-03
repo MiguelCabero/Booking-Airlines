@@ -1,7 +1,10 @@
+import { React, useContext } from 'react';
 import ToggleCheck from '../ToggleCheck';
 import './UserInputs.component.css';
+import TripContext from '../../store/trip-context';
 
 function UserForm(props) {
+	const currentTripContext = useContext(TripContext);
 	return (
 		<div className='passenger-inputs-field'>
 			<div className='input-element'>
@@ -246,11 +249,20 @@ function UserForm(props) {
 					<option value={2}>More than 9 years</option>
 				</select>
 			</div>
-			<ToggleCheck
+			{currentTripContext.trip.luggage == 1 ? <ToggleCheck
 				label='Bags'
 				action='Bags'
 				index={props.index}
-			/>
+				checked={true}
+			
+			/> : <ToggleCheck
+			label='Bags'
+			action='Bags'
+			index={props.index}
+			
+		
+		/>
+				}
 		</div>
 	);
 }

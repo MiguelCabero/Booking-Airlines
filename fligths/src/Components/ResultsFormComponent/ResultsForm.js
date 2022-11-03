@@ -2,12 +2,10 @@ import Filters from './Filters';
 import ResultItem from './ResultItem';
 import './ResultsForm.component.css';
 import { React, useContext, useEffect, useRef, useState } from 'react';
-import AppContext from '../../store/app-context';
 import TripContext from '../../store/trip-context';
 import axios from 'axios';
 
 function ResultsForm(props) {
-	const currentAppContext = useContext(AppContext);
 	const currentTripContext = useContext(TripContext);
 	const dateFilter = useRef(null);
 	const companyFilter = useRef(null);
@@ -38,7 +36,6 @@ function ResultsForm(props) {
 		if (layoverFilter.current.checked == true) {
 			filtersApplied = filtersApplied.filter((result) => result.layover != 0);
 		}
-		console.log(layoverFilter);
 		setFilteredResults(filtersApplied);
 	}
 
@@ -98,9 +95,9 @@ function ResultsForm(props) {
 							time={randomTime()}
 							duration={`${result.duration} h`}
 							layover={result.layover}
-							lugagge={result.lugagge}
+							luggage={result.luggage}
 							layoverText={result.layover == 0 ? 'No' : 'Yes'}
-							lugaggeText={result.luggage == 0 ? 'No' : 'Yes'}
+							luggageText={result.luggage == 0 ? 'No' : 'Yes'}
 							price={result.price}
 							key={index}
 							index={index}

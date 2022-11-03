@@ -2,10 +2,11 @@ import './UserForm.component.css';
 import UserInputs from './UserInputs';
 import { React, useState, useContext } from 'react';
 import AppContext from '../../store/app-context';
-import PreviousSection from '../PreviousSectionComponent/PreviousSection';
+import TripContext from '../../store/trip-context';
 
 function UserForm(props) {
 	const currentAppContext = useContext(AppContext);
+	const currentTripContext = useContext(TripContext);
 
 	function clickHandler(event) {
 		event.preventDefault();
@@ -44,7 +45,7 @@ function UserForm(props) {
 					</div>
 					<div>
 						<p>
-							<b>Total price: {price}€</b>
+							<b>Total price: {currentTripContext.trip.price}€</b>
 						</p>
 					</div>
 					<input
