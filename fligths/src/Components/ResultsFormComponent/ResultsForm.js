@@ -1,81 +1,109 @@
-import Filters from "./Filters";
-import ResultItem from "./ResultItem";
-import "./ResultsForm.component.css";
-import { React, useContext, useEffect, useState } from "react";
-import AppContext from "../../store/app-context";
-import TripContext from "../../store/trip-context";
-import axios from "axios";
+import Filters from './Filters';
+import ResultItem from './ResultItem';
+import './ResultsForm.component.css';
+import { React, useContext, useEffect, useRef } from 'react';
+import AppContext from '../../store/app-context';
+import TripContext from '../../store/trip-context';
+import axios from 'axios';
 
 function ResultsForm(props) {
-  const currentAppContext = useContext(AppContext);
-  const currentTripContext = useContext(TripContext);
+	const currentAppContext = useContext(AppContext);
+	const currentTripContext = useContext(TripContext);
+	const dateFilter = useRef(null);
+	const companyFilter = useRef(null);
+	const lugaggeFilter = useRef(null);
+	const layoverFilter = useRef(null);
 
-  let filters = currentTripContext.trip.results;
+	let filters = currentTripContext.trip.results;
 
-  console.log(currentTripContext.trip.results);
+	let filteredResults = [...currentTripContext.trip.results];
 
-  useEffect(() => {
-    if (
-      currentTripContext.trip.selectedOrigin != null &&
-      currentTripContext.trip.selectedDestination != null
-    ) {
-      callResults();
-    }
-  }, []);
+	function filterHandler() {
+		filteredResults = [...currentTripContext.trip.results];
+		if (dateFilter.current.value != null) {
+			filteredResults = filteredResults.filter((result) => {
+				result.date_selected == dateFilter.current.value;
+			});
+		}
+		if (companyFilter.current.value != null) {
+			filteredResults = filteredResults.filter(
+				(result) => result.airlineName == companyFilter.current.value
+			);
+		}
+		if (lugaggeFilter != null) {
+		}
+		if (layoverFilter !== null) {
+		}
+	}
 
-  function callResults() {
-    axios
-      .get(
-        `http://localhost:8083/api/prices/${currentTripContext.trip.selectedOrigin.id}/${currentTripContext.trip.selectedDestination.id}/${currentTripContext.trip.selectedDate}`,
-        {
-          headers: {
-            Accept: "application/json",
-          },
-        }
-      )
-      .then((response) => {
-        currentTripContext.trip.setResults(response.data);
-      });
-  }
+	useEffect(() => {
+		if (
+			currentTripContext.trip.selectedOrigin != null &&
+			currentTripContext.trip.selectedDestination != null
+		) {
+			callResults();
+		}
+	}, []);
 
-  function clickHandler(event) {
-    event.preventDefault();
-    currentAppContext.setStep(++currentAppContext.step);
-  }
+	function callResults() {
+		axios
+			.get(
+				`http://localhost:8083/api/prices/${currentTripContext.trip.selectedOrigin.id}/${currentTripContext.trip.selectedDestination.id}/${currentTripContext.trip.selectedDate}`,
+				{
+					headers: {
+						Accept: 'application/json',
+					},
+				}
+			)
+			.then((response) => {
+				currentTripContext.trip.setResults(response.data);
+			});
+	}
 
-  function randomTime() {
-    let hrs = Math.round(Math.random() * 24);
-    let mins = Math.round(Math.random() * 60);
-    let hFormat = hrs < 10 ? "0" : "";
-    let mFormat = mins < 10 ? "0" : "";
+	function clickHandler(event) {
+		event.preventDefault();
+		currentAppContext.setStep(++currentAppContext.step);
+	}
 
-    return String(hFormat + hrs + ":" + mFormat + mins);
-  }
+	function randomTime() {
+		let hrs = Math.round(Math.random() * 24);
+		let mins = Math.round(Math.random() * 60);
+		let hFormat = hrs < 10 ? '0' : '';
+		let mFormat = mins < 10 ? '0' : '';
 
-  return (
-    <div className="results-container">
-      <h2>Choose a flight</h2>
-      <Filters airlines={filters} dates={filters} />
-      {currentTripContext.trip.results &&
-        currentTripContext.trip.results.map((result, index) => (
-          <ResultItem
-            onSubmit={clickHandler}
-            companyName={result.airlineName}
-            flightNumber={Math.random().toString(36).slice(2)}
-            date={result.date_selected}
-            time={randomTime()}
-            duration={result.duration}
-            layover={result.layover}
-            lugagge={result.lugagge}
-            layoverText={result.layover == 0 ? "No" : "Yes"}
-            lugaggeText={result.lugagge == 0 ? "No" : "Yes"}
-            price={result.price}
-            key={index}
-            index={index}
-          />
-        ))}
-    </div>
-  );
+		return String(hFormat + hrs + ':' + mFormat + mins);
+	}
+
+	return (
+		<div className='results-container'>
+			<h2>Choose a flight</h2>
+			<Filters
+				airlines={filters}
+				dates={filters}
+				action={filterHandler}
+				dateFilterReference={dateFilter}
+				companyFilterReference={companyFilter}
+			/>
+			{currentTripContext.trip.results &&
+				filteredResults.map((result, index) => (
+					<ResultItem
+						onSubmit={clickHandler}
+						companyName={result.airlineName}
+						flightNumber={Math.random().toString(36).slice(2)}
+						date={result.date_selected}
+						time={randomTime()}
+						duration={`${result.duration} h`}
+						layover={result.layover}
+						lugagge={result.lugagge}
+						layoverText={result.layover == 0 ? 'No' : 'Yes'}
+						lugaggeText={result.lugagge == 0 ? 'No' : 'Yes'}
+						price={result.price}
+						key={index}
+						index={index}
+					/>
+				))}
+		</div>
+	);
 }
 
 export default ResultsForm;

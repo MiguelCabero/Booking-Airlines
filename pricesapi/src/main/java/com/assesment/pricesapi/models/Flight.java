@@ -23,6 +23,8 @@ public class Flight {
 	@Column
 	String airlineName;
 	@Column
+	String duration;
+	@Column
 	byte luggage = 0;
 	@Column
 	int layover = 0;
@@ -153,6 +155,14 @@ public class Flight {
 
 	public void setAirlineName(String airlineName) {
 		this.airlineName = airlineName;
+	}
+
+	public String getDuration() {
+		return duration;
+	}
+
+	public void setDuration(String duration) {
+		this.duration = duration;
 	}
 
 	@Override

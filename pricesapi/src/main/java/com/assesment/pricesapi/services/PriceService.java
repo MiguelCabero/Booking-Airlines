@@ -44,6 +44,8 @@ public class PriceService {
 				.findDistanceBetweenCities(flight.getCityOne(),
 						flight.getCityTwo());
 
+		final String duration = distance.getDuration().toString();
+
 		final Airline retrievedAirline = getById(flight.getAirline())
 				.get();
 		if (retrievedAirline == null) {
@@ -82,6 +84,7 @@ public class PriceService {
 
 		flight.setPrice(finalPrice);
 		flight.setAirlineName(retrievedAirline.getName());
+		flight.setDuration(duration);
 
 		return flight;
 
