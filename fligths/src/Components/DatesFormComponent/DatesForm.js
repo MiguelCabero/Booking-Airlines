@@ -3,20 +3,41 @@ import './DatesForm.component.css';
 import InputDate from './InputDate';
 import TripField from './TripField';
 import AppContext from '../../store/app-context';
-import TripContext from '../../store/trip-context';
-import { React, useContext, useState } from 'react';
+import { React, useContext, useState, useRef } from 'react';
 
 function DatesForm(props) {
 	const currentAppContext = useContext(AppContext);
-	const currentTripContext = useContext(TripContext);
+	const inputTrip = useRef(null);
+	const inputBacktrip = useRef(null);
 
 	const [checked, setChecked] = useState(props.checked);
 	function handleToggle() {
 		setChecked(!checked);
 	}
 
-	function clickHandler(event) {
+	function validateForm(event) {
 		event.preventDefault();
+		let today = new Date();
+		if (
+			inputTrip.current.value == '' ||
+			Date.parse(inputTrip.current.value) < today
+		) {
+			document
+				.getElementsByClassName('errorSpan')[0]
+				.classList.remove('invisible');
+		} else if (
+			checked &&
+			(inputBacktrip.current.value == '' ||
+				inputBacktrip.current.value < inputTrip.current.value)
+		) {
+			document
+				.getElementsByClassName('errorSpan')[1]
+				.classList.remove('invisible');
+		} else {
+			submitHandler(event);
+		}
+	}
+	function submitHandler(event) {
 		currentAppContext.setStep(++currentAppContext.step);
 	}
 
@@ -25,7 +46,7 @@ function DatesForm(props) {
 			<h2>Select dates</h2>
 			<form
 				className='booking-form'
-				onSubmit={clickHandler}>
+				onSubmit={validateForm}>
 				<div className='inputs-field'>
 					<TripField
 						origin={props.origin}
@@ -34,12 +55,16 @@ function DatesForm(props) {
 					<InputDate
 						message='Select trip date'
 						action='trip-date'
+						reference={inputTrip}
+						errorMessage='La fecha no puede ser nula ni anterior a la actual'
 					/>
 
 					{checked && (
 						<InputDate
 							message='Select back date'
 							action='back-date'
+							reference={inputBacktrip}
+							errorMessage='La fecha no puede ser nula ni anterior a la fecha de ida'
 						/>
 					)}
 

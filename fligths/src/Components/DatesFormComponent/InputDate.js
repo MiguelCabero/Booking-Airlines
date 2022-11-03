@@ -18,13 +18,18 @@ function InputDate(props) {
 	}
 	return (
 		<div className='input-date'>
-			<label htmlFor={props.action}>{props.message}</label>
-			<input
-				type='date'
-				name={props.action}
-				id={props.action}
-				onChange={handleChange}
-			/>
+			<div>
+				<label htmlFor={props.action}>{props.message}</label>
+				<input
+					type='date'
+					name={props.action}
+					id={props.action}
+					onChange={handleChange}
+					ref={props.reference}
+				/>
+			</div>
+
+			<span className='errorSpan invisible'>{props.errorMessage}</span>
 		</div>
 	);
 }

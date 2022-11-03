@@ -1,18 +1,20 @@
-.input-date,
-.checkbox-toggle {
+.input-date {
 	display: flex;
+	flex-direction: column;
 	padding: 1rem;
 }
 
-.input-date {
+.input-date > div {
+	display: flex;
 	justify-content: space-around;
+	width: 100%;
 }
 
-.input-date > label {
+.input-date label {
 	border-bottom: 1px solid var(--primary-color);
 }
 
-.input-date > input {
+.input-date input {
 	appearance: none;
 	color: #1d1d1d;
 	font-family: “Helvetica”, arial, sans-serif;
@@ -23,13 +25,26 @@
 	visibility: visible;
 	width: 140px;
 }
-.input-date > input:focus {
+.input-date input:focus {
 	color: var(--primary-color);
 	background-color: #ffffff;
 	outline: 0;
 	box-shadow: 0 0 0 0.2rem rgba(138, 43, 226, 0.2);
 }
 
-.input-date > input:hover {
+.input-date input:hover {
 	cursor: pointer;
+}
+
+.errorSpan {
+	color: red;
+	font-size: small;
+	display: block;
+	width: 100%;
+	text-align: end;
+	margin-top: 1rem;
+}
+
+.invisible {
+	display: none;
 }
