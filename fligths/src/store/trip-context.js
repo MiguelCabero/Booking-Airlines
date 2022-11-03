@@ -8,17 +8,24 @@ let initialTripContext = JSON.parse(
 		selectedOrigin: {},
 		selectedDestination: {},
 		selectedDate: new Date().toISOString().split('T')[0],
+		luggage: '',
+		layover: '',
 		results: [],
+		selectedCompany: '',
 		setOrigin: (origin) => {},
 		setDestination: (destination) => {},
 		setDate: (date) => {},
 		setCities: (date) => {},
 		setResults: (results) => {},
+		setCompany: (company) => {},
+		setLayover: (layover) => {},
+		setLuggage: (luggage) => {},
 	},
 	backTrip: {
 		selectedOrigin: {},
 		selectedDestination: {},
 		selectedDate: '',
+		selectedCompany: '',
 	},
 	setBackTrip: (backTrip) => {},
 };
@@ -28,6 +35,10 @@ const TripContext = createContext(initialTripContext);
 export function TripContextProvider(props) {
 	const [currentAvailableCities, setCurrentAvailableCities] = useState(
 		initialTripContext.trip.availableCountries
+	);
+
+	const [currentSelectedCompany, setCurrentSelectedCompany] = useState(
+		initialTripContext.trip.selectedCompany
 	);
 	const [currentOrigin, setCurrentOrigin] = useState(
 		initialTripContext.trip.selectedOrigin
@@ -45,8 +56,27 @@ export function TripContextProvider(props) {
 		initialTripContext.backTrip
 	);
 
+	const [currentLayover, setCurrentLayover] = useState(
+		initialTripContext.trip.layover
+	);
+	const [currentLuggage, setCurrentLuggage] = useState(
+		initialTripContext.trip.luggage
+	);
+
+	function luggageHandler(luggage) {
+		setCurrentLuggage(luggage);
+	}
+
+	function layoverHandler(layover) {
+		setCurrentLayover(layover);
+	}
+
 	function resultsHandler(results) {
 		setCurrentResults(results);
+	}
+
+	function companyHandler(company) {
+		setCurrentSelectedCompany(company);
 	}
 
 	function backTripHandler(backTrip) {
@@ -75,12 +105,18 @@ export function TripContextProvider(props) {
 			selectedOrigin: currentOrigin,
 			selectedDestination: currentDestination,
 			selectedDate: currentSelectedDate,
+			selectedCompany: currentSelectedCompany,
+			layover: currentLayover,
+			luggage: currentLuggage,
 			results: currentResults,
 			setOrigin: setOriginHandler,
 			setDestination: setDestinationHandler,
 			setDate: setCurrentDateHandler,
 			setCities: setCitiesHandler,
 			setResults: resultsHandler,
+			setCompany: companyHandler,
+			setLayover: layoverHandler,
+			setLuggage: luggageHandler,
 		},
 		backTrip: currentBackTrip,
 		setBackTrip: backTripHandler,

@@ -15,7 +15,6 @@ function ResultsForm(props) {
 	const layoverFilter = useRef(null);
 
 	let filters = currentTripContext.trip.results;
-	console.log(filters);
 
 	const [filteredResults, setFilteredResults] = useState([
 		...currentTripContext.trip.results,
@@ -67,11 +66,6 @@ function ResultsForm(props) {
 			});
 	}
 
-	function clickHandler(event) {
-		event.preventDefault();
-		currentAppContext.setStep(++currentAppContext.step);
-	}
-
 	function randomTime() {
 		let hrs = Math.round(Math.random() * 24);
 		let mins = Math.round(Math.random() * 60);
@@ -97,7 +91,7 @@ function ResultsForm(props) {
 				(filteredResults.length > 0 ? (
 					filteredResults.map((result, index) => (
 						<ResultItem
-							onSubmit={clickHandler}
+							companyId={result.airline}
 							companyName={result.airlineName}
 							flightNumber={Math.random().toString(36).slice(2)}
 							date={result.date_selected}

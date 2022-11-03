@@ -232,6 +232,7 @@ function UserForm(props) {
 				<input
 					type='text'
 					name={`user-identification${props.index}`}
+					required
 				/>
 			</div>
 			<div className='input-element'>

@@ -1,11 +1,29 @@
 import './ResultItem.component.css';
+import AppContext from '../../store/app-context';
+import { React, useContext, useRef } from 'react';
+import TripContext from '../../store/trip-context';
 
 function ResultItem(props) {
+	const currentAppContext = useContext(AppContext);
+	const currentTripContext = useContext(TripContext);
+	const companyIdRef = useRef(null);
+	const layoverRef = useRef(null);
+	const dateRef = useRef(null);
+	const luggageRef = useRef(null);
+
+	function clickHandler(event) {
+		event.preventDefault();
+		console.log(companyIdRef.current.name);
+		currentTripContext.trip.setCompany(companyIdRef.current.name);
+		currentTripContext.trip.setLayover(layoverRef.current.name);
+		currentTripContext.trip.setLuggage(luggageRef.current.name);
+		currentAppContext.setStep(++currentAppContext.step);
+	}
 	return (
 		<div className='result-item'>
 			<form
 				className='item-form'
-				onSubmit={props.onSubmit}>
+				onSubmit={clickHandler}>
 				<div className='info-inputs'>
 					<div className='companyInfo'>
 						<label htmlFor={`${props.companyName}${props.index}`}>
@@ -13,8 +31,9 @@ function ResultItem(props) {
 						</label>
 						<input
 							type='text'
-							name={`${props.companyName}${props.index}`}
+							name={props.companyId}
 							value={`${props.companyName}`}
+							ref={companyIdRef}
 							className='result-item-element'
 							readOnly
 						/>
@@ -38,6 +57,7 @@ function ResultItem(props) {
 								type='text'
 								name={`${props.date}${props.index}`}
 								value={`${props.date}`}
+								ref={dateRef}
 								readOnly
 							/>
 							<input
@@ -62,8 +82,8 @@ function ResultItem(props) {
 						<label htmlFor={`${props.layover}${props.index}`}>Layover </label>
 						<input
 							type='text'
-							name={`${props.layover}${props.index}`}
-							data={props.layover}
+							name={props.layover}
+							ref={layoverRef}
 							value={`${props.layoverText}`}
 							className='result-item-element'
 							readOnly
@@ -73,8 +93,8 @@ function ResultItem(props) {
 						<label htmlFor={`${props.lugagge}${props.index}`}>Luggage </label>
 						<input
 							type='text'
-							data={props.lugagge}
-							name={`${props.lugagge}${props.index}`}
+							ref={luggageRef}
+							name={props.lugagge}
 							value={`${props.lugaggeText}`}
 							className='result-item-element'
 							readOnly
