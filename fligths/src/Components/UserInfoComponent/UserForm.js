@@ -19,11 +19,6 @@ function UserForm(props) {
 		setPassengers(passengers + 1);
 	}
 
-	function handlePrevious(event){
-		event.preventDefault();
-		currentAppContext.setStep(--currentAppContext.step);
-	}
-	
 	for (let i = 0; i < passengers; i++) {
 		users.push(
 			<UserInputs
@@ -40,7 +35,6 @@ function UserForm(props) {
 				onSubmit={clickHandler}>
 				{users}
 				<div className='passenger-submit-field'>
-					<button onClick={handlePrevious}>Previous Section</button>
 					<div className='add-passenger-container'>
 						<button
 							className='add-passenger-button'

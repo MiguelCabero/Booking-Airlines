@@ -1,19 +1,30 @@
-import AppContext from "../../store/app-context";
-import useContext from "react";
+import AppContext from '../../store/app-context';
+import { React, useContext } from 'react';
+import TripContext from '../../store/trip-context';
+import styles from './PreviousSection.component.css';
 
 const PreviousSection = () => {
-  const currentAppContext = useContext(AppContext);
-  function handlePrevious(event) {
-    event.preventDefault();
-    currentAppContext.setStep(--currentAppContext.step);
-  }
+	const currentAppContext = useContext(AppContext);
+	const tripContext = useContext(TripContext);
 
-  return (
-    <>
-      <button onClick={handlePrevious}>Previous Section</button>
-      {/* <input type={button}>Previous Section</input> */}
-    </>
-  );
-}
+	function handlePrevious(event) {
+		event.preventDefault();
+		currentAppContext.setStep(--currentAppContext.step);
+
+		if (currentAppContext.step == 1) {
+			tripContext.trip.setOrigin({});
+		}
+	}
+
+	return (
+		<div className='buttonContainer'>
+			<button
+				className='button'
+				onClick={handlePrevious}>
+				Previous Section
+			</button>
+		</div>
+	);
+};
 
 export default PreviousSection;
