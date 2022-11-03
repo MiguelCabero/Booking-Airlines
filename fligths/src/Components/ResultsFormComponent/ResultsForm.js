@@ -50,17 +50,19 @@ function ResultsForm(props) {
 				airlines={filters}
 				dates={filters}
 			/>
-			{props.results &&
-				props.results.map((result, index) => (
+			{currentTripContext.trip.results &&
+				currentTripContext.trip.results.map((result, index) => (
 					<ResultItem
 						onSubmit={clickHandler}
-						companyName={result.companyName.name}
+						companyName={result.airlineName}
 						flightNumber={result.flightNumber}
-						date={result.date}
+						date={result.date_selected}
 						time={result.time}
 						duration={result.duration}
 						layover={result.layover}
 						lugagge={result.lugagge}
+						layoverText={result.layover == 0 ? 'No' : 'Yes'}
+						lugaggeText={result.lugagge == 0 ? 'No' : 'Yes'}
 						price={result.price}
 						key={index}
 						index={index}

@@ -2,7 +2,6 @@ import ToggleCheck from '../ToggleCheck';
 import './Filters.component.css';
 
 function Filters(props) {
-	console.log(props.dates);
 	return (
 		<div className='results-filters'>
 			<form className='filters-form'>

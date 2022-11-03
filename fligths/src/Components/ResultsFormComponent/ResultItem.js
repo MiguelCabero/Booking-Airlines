@@ -63,7 +63,8 @@ function ResultItem(props) {
 						<input
 							type='text'
 							name={`${props.layover}${props.index}`}
-							defaultValue={`${props.layover}`}
+							data={props.layover}
+							defaultValue={`${props.layoverText}`}
 							className='result-item-element'
 							readOnly
 						/>
@@ -72,8 +73,9 @@ function ResultItem(props) {
 						<label htmlFor={`${props.lugagge}${props.index}`}>Luggage </label>
 						<input
 							type='text'
+							data={props.lugagge}
 							name={`${props.lugagge}${props.index}`}
-							defaultValue={`${props.lugagge}`}
+							defaultValue={`${props.lugaggeText}`}
 							className='result-item-element'
 							readOnly
 						/>
@@ -83,7 +85,7 @@ function ResultItem(props) {
 						<input
 							type='text'
 							name={`${props.price}${props.index}`}
-							defaultValue={`${props.price}`}
+							defaultValue={`${props.price.toFixed(2)} €`}
 							className='result-item-element'
 							readOnly
 						/>
