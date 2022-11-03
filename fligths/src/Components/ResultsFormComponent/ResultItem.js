@@ -94,8 +94,8 @@ function ResultItem(props) {
 				<input
 					type='submit'
 					name='select-option'
-					defaultValue='Select'
 					className='select-item-element'
+					value='Select'
 				/>
 			</form>
 		</div>

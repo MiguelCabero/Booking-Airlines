@@ -4,12 +4,16 @@ import "./Filters.component.css";
 function Filters(props) {
   let set = new Set(props.airlines.map((obj) => obj.airlineName));
   set = Array.from(set);
+  
   return (
     <div className="results-filters">
       <form className="filters-form">
         <h3>Filters:</h3>
         <label htmlFor="Company-filter">Airline: </label>
         <select name="Company-filter" id="company-filter">
+			<option value={null}>
+			-- Select airline --
+			</option>
           {props.airlines &&
             set.map((airline, index) => (
               <option value={airline} key={index}>
@@ -19,6 +23,9 @@ function Filters(props) {
         </select>
         <label htmlFor="Date-filter">Date: </label>
         <select name="Date-filter" id="date-filter">
+		<option value={null}>
+			-- Select date --
+			</option>
           {props.dates &&
             props.dates.map((date, index) => (
               <option value={date.date_selected} key={index}>
