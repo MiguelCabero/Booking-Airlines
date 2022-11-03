@@ -81,6 +81,7 @@ public class PriceService {
 				* daysLeftFactor * ageFactor;
 
 		flight.setPrice(finalPrice);
+		flight.setAirlineName(retrievedAirline.getName());
 
 		return flight;
 

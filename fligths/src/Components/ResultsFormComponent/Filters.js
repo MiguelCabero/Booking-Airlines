@@ -16,7 +16,7 @@ function Filters(props) {
 							<option
 								value={airline.id}
 								key={index}>
-								{airline.name}
+								{airline.airlineName}
 							</option>
 						))}
 				</select>

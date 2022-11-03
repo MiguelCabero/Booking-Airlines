@@ -21,6 +21,8 @@ public class Flight {
 	@Column
 	Integer airline;
 	@Column
+	String airlineName;
+	@Column
 	byte luggage = 0;
 	@Column
 	int layover = 0;
@@ -143,6 +145,14 @@ public class Flight {
 
 	public void setDestination(City destination) {
 		this.destination = destination;
+	}
+
+	public String getAirlineName() {
+		return airlineName;
+	}
+
+	public void setAirlineName(String airlineName) {
+		this.airlineName = airlineName;
 	}
 
 	@Override

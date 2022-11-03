@@ -9,8 +9,8 @@ import axios from 'axios';
 function ResultsForm(props) {
 	const currentAppContext = useContext(AppContext);
 	const currentTripContext = useContext(TripContext);
-	let airlinesFilter = [];
-	let datesFilter = currentTripContext.trip.results;
+
+	let filters = currentTripContext.trip.results;
 
 	console.log(currentTripContext.trip.results);
 
@@ -47,8 +47,8 @@ function ResultsForm(props) {
 		<div className='results-container'>
 			<h2>Choose a flight</h2>
 			<Filters
-				airlines={airlinesFilter}
-				dates={datesFilter}
+				airlines={filters}
+				dates={filters}
 			/>
 			{props.results &&
 				props.results.map((result, index) => (
