@@ -34,7 +34,7 @@ function ResultsForm(props) {
 			);
 		}
 		if (lugaggeFilter.current.checked == true) {
-			filtersApplied = filtersApplied.filter((result) => result.lugagge != 0);
+			filtersApplied = filtersApplied.filter((result) => result.luggage != 0);
 		}
 		if (layoverFilter.current.checked == true) {
 			filtersApplied = filtersApplied.filter((result) => result.layover != 0);
@@ -106,7 +106,7 @@ function ResultsForm(props) {
 							layover={result.layover}
 							lugagge={result.lugagge}
 							layoverText={result.layover == 0 ? 'No' : 'Yes'}
-							lugaggeText={result.lugagge == 0 ? 'No' : 'Yes'}
+							lugaggeText={result.luggage == 0 ? 'No' : 'Yes'}
 							price={result.price}
 							key={index}
 							index={index}

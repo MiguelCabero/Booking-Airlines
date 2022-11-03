@@ -5,7 +5,6 @@ import TripContext from '../../store/trip-context';
 function Country(props) {
 	const currentAppContext = useContext(AppContext);
 	const currentTripContext = useContext(TripContext);
-	console.log(currentTripContext);
 
 	function clickHandler() {
 		let selected = currentTripContext.trip.availableCountries.find(
