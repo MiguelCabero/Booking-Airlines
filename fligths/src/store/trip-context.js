@@ -8,10 +8,12 @@ let initialTripContext = JSON.parse(
 		selectedOrigin: {},
 		selectedDestination: {},
 		selectedDate: new Date().toISOString().split('T')[0],
+		results: [],
 		setOrigin: (origin) => {},
 		setDestination: (destination) => {},
 		setDate: (date) => {},
 		setCities: (date) => {},
+		setResults: (results) => {},
 	},
 	backTrip: {
 		selectedOrigin: {},
@@ -36,9 +38,16 @@ export function TripContextProvider(props) {
 	const [currentSelectedDate, setCurrentSelectedDate] = useState(
 		initialTripContext.trip.selectedDate
 	);
+	const [currentResults, setCurrentResults] = useState(
+		initialTripContext.trip.results
+	);
 	const [currentBackTrip, setCurrentBackTrip] = useState(
 		initialTripContext.backTrip
 	);
+
+	function resultsHandler(results) {
+		setCurrentResults(results);
+	}
 
 	function backTripHandler(backTrip) {
 		setCurrentBackTrip(backTrip);
@@ -66,10 +75,12 @@ export function TripContextProvider(props) {
 			selectedOrigin: currentOrigin,
 			selectedDestination: currentDestination,
 			selectedDate: currentSelectedDate,
+			results: currentResults,
 			setOrigin: setOriginHandler,
 			setDestination: setDestinationHandler,
 			setDate: setCurrentDateHandler,
 			setCities: setCitiesHandler,
+			setResults: resultsHandler,
 		},
 		backTrip: currentBackTrip,
 		setBackTrip: backTripHandler,

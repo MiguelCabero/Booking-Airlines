@@ -1,31 +1,55 @@
 import Filters from './Filters';
 import ResultItem from './ResultItem';
 import './ResultsForm.component.css';
-import { React, useContext } from 'react';
+import { React, useContext, useEffect } from 'react';
 import AppContext from '../../store/app-context';
 import TripContext from '../../store/trip-context';
+import axios from 'axios';
 
 function ResultsForm(props) {
 	const currentAppContext = useContext(AppContext);
 	const currentTripContext = useContext(TripContext);
+	let airlinesFilter = [];
+	let datesFilter = [];
+
+	useEffect(() => {
+		if (
+			currentTripContext.trip.selectedOrigin != null &&
+			currentTripContext.trip.selectedDestination != null
+		) {
+			callResults();
+		}
+	}, []);
+
+	function callResults() {
+		axios
+			.get(
+				`http://localhost:8083/api/prices/${currentTripContext.trip.selectedOrigin.id}/${currentTripContext.trip.selectedDestination.id}/${currentTripContext.trip.selectedDate}`,
+				{
+					headers: {
+						Accept: 'application/json',
+					},
+				}
+			)
+			.then((response) => {
+				currentTripContext.trip.setResults(response.data);
+				console.log(currentTripContext.trip.results);
+				/*results.map((result) => {
+					datesFilter.push(result.date_selected);
+				});*/
+			});
+	}
 	function clickHandler(event) {
 		event.preventDefault();
 		currentAppContext.setStep(++currentAppContext.step);
 	}
 
-	console.log(currentTripContext);
-	let airlines = [];
-	let dates = [];
-
-	props.results.map((result) => dates.push(result.date));
-	props.results.map((result) => airlines.push(result.companyName));
-
 	return (
 		<div className='results-container'>
 			<h2>Choose a flight</h2>
 			<Filters
-				airlines={airlines}
-				dates={dates}
+				airlines={airlinesFilter}
+				dates={datesFilter}
 			/>
 			{props.results &&
 				props.results.map((result, index) => (
