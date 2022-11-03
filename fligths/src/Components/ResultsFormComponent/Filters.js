@@ -27,9 +27,9 @@ function Filters(props) {
 					{props.dates &&
 						props.dates.map((date, index) => (
 							<option
-								value={date}
+								value={date.date_selected}
 								key={index}>
-								{date}
+								{date.date_selected}
 							</option>
 						))}
 				</select>

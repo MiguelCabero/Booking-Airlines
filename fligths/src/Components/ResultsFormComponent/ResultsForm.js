@@ -1,7 +1,7 @@
 import Filters from './Filters';
 import ResultItem from './ResultItem';
 import './ResultsForm.component.css';
-import { React, useContext, useEffect } from 'react';
+import { React, useContext, useEffect, useState } from 'react';
 import AppContext from '../../store/app-context';
 import TripContext from '../../store/trip-context';
 import axios from 'axios';
@@ -10,7 +10,9 @@ function ResultsForm(props) {
 	const currentAppContext = useContext(AppContext);
 	const currentTripContext = useContext(TripContext);
 	let airlinesFilter = [];
-	let datesFilter = [];
+	let datesFilter = currentTripContext.trip.results;
+
+	console.log(currentTripContext.trip.results);
 
 	useEffect(() => {
 		if (
@@ -33,12 +35,9 @@ function ResultsForm(props) {
 			)
 			.then((response) => {
 				currentTripContext.trip.setResults(response.data);
-				console.log(currentTripContext.trip.results);
-				/*results.map((result) => {
-					datesFilter.push(result.date_selected);
-				});*/
 			});
 	}
+
 	function clickHandler(event) {
 		event.preventDefault();
 		currentAppContext.setStep(++currentAppContext.step);
