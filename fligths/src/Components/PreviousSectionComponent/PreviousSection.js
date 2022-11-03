@@ -21,7 +21,7 @@ const PreviousSection = () => {
 			<button
 				className='button'
 				onClick={handlePrevious}>
-				Previous Section
+				Previous step
 			</button>
 		</div>
 	);

@@ -18,9 +18,11 @@ function DatesForm(props) {
 	function validateForm(event) {
 		event.preventDefault();
 		let today = new Date();
+		let yesterday = new Date();
+		yesterday.setDate(today.getDate() - 1);
 		if (
 			inputTrip.current.value == '' ||
-			Date.parse(inputTrip.current.value) < today
+			Date.parse(inputTrip.current.value) < Date.parse(yesterday)
 		) {
 			document
 				.getElementsByClassName('errorSpan')[0]

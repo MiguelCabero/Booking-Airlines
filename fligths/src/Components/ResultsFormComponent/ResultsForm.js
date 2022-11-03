@@ -45,8 +45,18 @@ function ResultsForm(props) {
 			currentTripContext.trip.selectedDestination != null
 		) {
 			callResults();
+			setFilteredResults([...currentTripContext.trip.results]);
 		}
 	}, []);
+
+	useEffect(() => {
+		if (
+			currentTripContext.trip.selectedOrigin != null &&
+			currentTripContext.trip.selectedDestination != null
+		) {
+			setFilteredResults([...currentTripContext.trip.results]);
+		}
+	}, [currentTripContext.trip.results]);
 
 	function callResults() {
 		axios
