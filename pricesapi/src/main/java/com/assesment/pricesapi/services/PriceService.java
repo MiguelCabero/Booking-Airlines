@@ -36,7 +36,6 @@ public class PriceService {
 
 		double distanceFactor = 1;
 		double stopsFactor = 1;
-		final double luggageFactor = 1 + (flight.getLuggage() * 1.3);
 		double daysLeftFactor = 1;
 		double ageFactor = 0;
 
@@ -48,6 +47,9 @@ public class PriceService {
 
 		final Airline retrievedAirline = getById(flight.getAirline())
 				.get();
+		flight.setLuggage(retrievedAirline.isIncludedLuggage());
+		final double luggageFactor = 1 + (flight.getLuggage() * 1.3);
+
 		if (retrievedAirline == null) {
 			throw new ClassNotFoundException();
 		}

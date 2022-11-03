@@ -22,7 +22,7 @@ public class Airline {
 	private String name;
 
 	@Column(name = "included_luggage")
-	private boolean includedLuggage;
+	private byte includedLuggage;
 	@Column(name = "base_price")
 	private double basePrice;
 
@@ -34,7 +34,7 @@ public class Airline {
 	public Airline() {
 	}
 
-	public Airline(Integer id, String name, boolean includedLuggage,
+	public Airline(Integer id, String name, byte includedLuggage,
 			double basePrice) {
 		super();
 		this.id = id;
@@ -59,11 +59,11 @@ public class Airline {
 		this.name = name;
 	}
 
-	public boolean isIncludedLuggage() {
+	public byte isIncludedLuggage() {
 		return includedLuggage;
 	}
 
-	public void setIncludedLuggage(boolean includedLuggage) {
+	public void setIncludedLuggage(byte includedLuggage) {
 		this.includedLuggage = includedLuggage;
 	}
 

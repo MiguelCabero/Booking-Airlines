@@ -31,7 +31,6 @@ function ResultItem(props) {
 							readOnly
 						/>
 					</div>
-					{console.log(props)}
 					<div className='dateInfo'>
 						<label htmlFor={`${props.date}${props.index}`}>Date</label>
 						<div className='fligth-datetime'>

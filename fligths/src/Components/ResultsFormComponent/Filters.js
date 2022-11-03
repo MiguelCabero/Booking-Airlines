@@ -44,10 +44,14 @@ function Filters(props) {
 				<ToggleCheck
 					label='Layover'
 					action='Layover'
+					reference={props.layoverFilterReference}
+					onChange={props.action}
 				/>
 				<ToggleCheck
 					label='Luggage'
 					action='Luggage'
+					reference={props.lugaggeFilterReference}
+					onChange={props.action}
 				/>
 			</form>
 		</div>

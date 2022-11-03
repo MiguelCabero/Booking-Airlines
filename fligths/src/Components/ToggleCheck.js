@@ -10,6 +10,7 @@ function ToggleCheck(props) {
 					name={`${props.action}${props.index}`}
 					checked={props.checked}
 					onChange={props.onChange}
+					ref={props.reference}
 				/>
 				<div className='toggler-slider'>
 					<div className='toggler-knob' />
