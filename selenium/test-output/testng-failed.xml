@@ -5,11 +5,10 @@
     <classes>
       <class name="selenium.TestSelenium">
         <methods>
-          <include name="lambdaError"/>
           <include name="open"/>
           <include name="setup"/>
-          <include name="signUpFilling"/>
-          <include name="loginSuccess"/>
+          <include name="selectCities"/>
+          <include name="tearDown"/>
         </methods>
       </class> <!-- selenium.TestSelenium -->
     </classes>
