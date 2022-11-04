@@ -1,13 +1,19 @@
 package selenium;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeClass;
+import org.testng.AssertJUnit;
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -21,20 +27,23 @@ public class TestSelenium {
 
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
-	}
-
-	@AfterClass
-	void tearDown() {
-		driver.close();
-	}
-
-	@BeforeMethod
-	void open() {
 		driver.get("http://localhost:3000/");
 		driver.manage().window().maximize();
 		driver.manage().timeouts()
 				.implicitlyWait(Duration.ofSeconds(2));
 	}
+
+	@AfterMethod
+	@AfterClass
+	void tearDown() {
+		driver.close();
+	}
+
+	/*
+	 * @BeforeMethod void open() {
+	 * 
+	 * }
+	 */
 
 	@Test(priority = 0)
 	void selectCities() throws InterruptedException {
@@ -59,8 +68,149 @@ public class TestSelenium {
 
 		Thread.sleep(3000);
 
-		Assert.assertEquals(originCity, "Seville");
-		Assert.assertEquals(destinationCity, "Rome");
+		AssertJUnit.assertEquals(originCity, "Seville");
+		AssertJUnit.assertEquals(destinationCity, "Rome");
+	}
+
+	@Test(priority = 1)
+	void selectBadDate() throws InterruptedException {
+
+		driver.findElement(By.xpath(
+				"//*[@id=\"root\"]/div/div/div[1]/form/div[1]/div[4]/label"))
+				.click();
+
+		Thread.sleep(3000);
+
+		driver.findElement(By.id("trip-date")).sendKeys("01/11/2022");
+
+		final String errorMessage = driver.findElement(By.xpath(
+				"//*[@id=\"root\"]/div/div/div[1]/form/div[1]/div[2]/span"))
+				.getText();
+
+		Thread.sleep(3000);
+
+		AssertJUnit.assertEquals(errorMessage,
+				"La fecha no puede ser nula ni anterior a la actual");
+	}
+
+	@Test(priority = 2)
+	void selectDate() throws InterruptedException {
+
+		Thread.sleep(3000);
+
+		driver.findElement(By.id("trip-date")).clear();
+		driver.findElement(By.id("trip-date")).sendKeys("14/11/2022");
+
+		driver.findElement(By.xpath(
+				"//*[@id=\"root\"]/div/div/div[1]/form/div[2]/input"))
+				.click();
+
+		final String companyName = driver.findElement(By.xpath(
+				"//*[@id=\"root\"]/div/div/div[1]/div[2]/form/div/div[1]/input"))
+				.getDomAttribute("value");
+
+		Thread.sleep(3000);
+
+		AssertJUnit.assertEquals(companyName, "Iberia");
+	}
+
+	@Test(priority = 3)
+	void filterFligth() throws InterruptedException {
+
+		final Select airlineSelect = new Select(driver.findElement(
+				By.xpath("//*[@id=\"company-filter\"]")));
+
+		final Select dateSelect = new Select(driver
+				.findElement(By.xpath("//*[@id=\"date-filter\"]")));
+
+		airlineSelect.selectByVisibleText("Iberia");
+
+		dateSelect.selectByVisibleText("2022-11-11");
+
+		Thread.sleep(3000);
+		final WebElement results = driver.findElement(By.xpath(
+				"//*[@id=\"root\"]/div/div/div[1]/div[2]/form"));
+
+		final List<WebElement> childs = results
+				.findElements(By.xpath("./child::*"));
+
+		AssertJUnit.assertEquals(childs.size(), 2);
+
+		Thread.sleep(3000);
+
+	}
+
+	@Test(priority = 4)
+	void selectFlight() throws InterruptedException {
+
+		driver.findElement(By.xpath(
+				"//*[@id=\"root\"]/div/div/div[1]/div[2]/form/input"))
+				.click();
+
+		Thread.sleep(3000);
+		final String price = driver.findElement(By.xpath(
+				"//*[@id=\"root\"]/div/div/div[1]/form/div[2]/div[2]/p/b"))
+				.getText();
+
+		AssertJUnit.assertTrue(price.contains("306"));
+
+		Thread.sleep(3000);
+
+	}
+
+	@Test(priority = 5)
+	void changePassengersPriceUpdate() throws InterruptedException {
+
+		driver.findElement(By.xpath(
+				"//*[@id=\"root\"]/div/div/div[1]/form/div[2]/div[1]/button"))
+				.click();
+
+		Thread.sleep(3000);
+		final String price = driver.findElement(By.xpath(
+				"//*[@id=\"root\"]/div/div/div[1]/form/div[3]/div[2]/p/b"))
+				.getText();
+
+		AssertJUnit.assertTrue(price.contains("612"));
+
+		Thread.sleep(3000);
+
+	}
+
+	@Test(priority = 6)
+	void clickInfoshowsInfo() throws InterruptedException {
+
+		driver.findElement(By
+				.xpath("//*[@id=\"root\"]/div/header/nav/ul/li[2]/a"))
+				.click();
+
+		Thread.sleep(3000);
+		final String title = driver
+				.findElement(By.xpath("//*[@id=\"root\"]/div/div/h1"))
+				.getText();
+
+		AssertJUnit.assertEquals(title, "About Solera flights™");
+
+		Thread.sleep(3000);
+
+	}
+
+	@Test(priority = 7)
+	void windowReloadKeepsState() throws InterruptedException {
+
+		driver.findElement(By
+				.xpath("//*[@id=\"root\"]/div/header/nav/ul/li[1]/a"))
+				.click();
+
+		driver.navigate().refresh();
+		Thread.sleep(3000);
+		final String price = driver.findElement(By.xpath(
+				"//*[@id=\"root\"]/div/div/div[1]/form/div[3]/div[2]/p/b"))
+				.getText();
+
+		AssertJUnit.assertTrue(price.contains("612"));
+
+		Thread.sleep(3000);
+
 	}
 
 	/*
