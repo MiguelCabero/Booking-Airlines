@@ -1,9 +1,5 @@
 package selenium;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.Test;
-import org.testng.annotations.BeforeClass;
-import org.testng.AssertJUnit;
 import java.time.Duration;
 import java.util.List;
 
@@ -11,7 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
+import org.testng.AssertJUnit;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -33,7 +29,6 @@ public class TestSelenium {
 				.implicitlyWait(Duration.ofSeconds(2));
 	}
 
-	@AfterMethod
 	@AfterClass
 	void tearDown() {
 		driver.close();

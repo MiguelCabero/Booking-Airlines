@@ -11,6 +11,7 @@
           <include name="setup"/>
           <include name="changePassengersPriceUpdate"/>
           <include name="filterFligth"/>
+          <include name="selectCities"/>
           <include name="tearDown"/>
           <include name="selectFlight"/>
           <include name="windowReloadKeepsState"/>
