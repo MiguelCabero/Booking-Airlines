@@ -149,8 +149,6 @@ public class TestSelenium {
 
 		AssertJUnit.assertTrue(price.contains("306"));
 
-		Thread.sleep(3000);
-
 	}
 
 	@Test(priority = 5)
@@ -166,8 +164,6 @@ public class TestSelenium {
 				.getText();
 
 		AssertJUnit.assertTrue(price.contains("612"));
-
-		Thread.sleep(3000);
 
 	}
 
@@ -185,8 +181,6 @@ public class TestSelenium {
 
 		AssertJUnit.assertEquals(title, "About Solera flights™");
 
-		Thread.sleep(3000);
-
 	}
 
 	@Test(priority = 7)
@@ -203,8 +197,6 @@ public class TestSelenium {
 				.getText();
 
 		AssertJUnit.assertTrue(price.contains("612"));
-
-		Thread.sleep(3000);
 
 	}
 

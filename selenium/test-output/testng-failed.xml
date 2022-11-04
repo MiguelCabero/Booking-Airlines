@@ -5,16 +5,9 @@
     <classes>
       <class name="selenium.TestSelenium">
         <methods>
-          <include name="selectDate"/>
-          <include name="clickInfoshowsInfo"/>
-          <include name="selectBadDate"/>
           <include name="setup"/>
           <include name="changePassengersPriceUpdate"/>
-          <include name="filterFligth"/>
-          <include name="selectCities"/>
           <include name="tearDown"/>
-          <include name="selectFlight"/>
-          <include name="windowReloadKeepsState"/>
         </methods>
       </class> <!-- selenium.TestSelenium -->
     </classes>
