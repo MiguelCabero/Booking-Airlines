@@ -10,6 +10,8 @@ function UserForm(props) {
 	const currentTripContext = useContext(TripContext);
 	const currentPassengersContext = useContext(PassengersContext);
 	let users = currentPassengersContext.passengers;
+	let currentTrips = [...currentTripContext.trips]
+
 	const passengerBase = {
 		name: '',
 		surname: '',
@@ -54,7 +56,7 @@ function UserForm(props) {
 					</div>
 					<div>
 						<p>
-							<b>Total price: {currentTripContext.trip.price}€</b>
+							<b>Total price: {currentTrips[0].finalPrices.reduce((a,b)=> a+b)}€</b>
 						</p>
 					</div>
 					<input

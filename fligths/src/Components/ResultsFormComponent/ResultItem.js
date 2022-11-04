@@ -19,6 +19,7 @@ function ResultItem(props) {
 		currentTrips[0].layover = layoverRef.current.name;
 		currentTrips[0].luggage = luggageRef.current.name;
 		currentTrips[0].basePrice = props.price.toFixed(2);
+		currentTripContext.setTrips(currentTrips);
 		currentAppContext.setStep(++currentAppContext.step);
 	}
 	return (
