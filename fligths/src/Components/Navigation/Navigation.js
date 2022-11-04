@@ -1,7 +1,7 @@
 import { React } from 'react';
 import { Link } from 'react-router-dom';
 import './Navigation.component.css';
-const Navigation = (props) => {
+const Navigation = () => {
 	return (
 		<header className='header'>
 			<div className='logo-container'>

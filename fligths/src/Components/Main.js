@@ -7,7 +7,7 @@ import AppContext from '../store/app-context';
 import TripContext from '../store/trip-context';
 import PreviousSection from './PreviousSectionComponent/PreviousSection';
 
-const Main = (props) => {
+const Main = () => {
 	const currentAppContext = useContext(AppContext);
 	const tripContext = useContext(TripContext);
 	return (
@@ -23,6 +23,8 @@ const Main = (props) => {
 			)}
 			{currentAppContext.step == 4 && <ResultsForm />}
 			{currentAppContext.step == 5 && <UserForm />}
+			{currentAppContext.step != 1 && <PreviousSection />}
+
 		</div>
 	);
 };

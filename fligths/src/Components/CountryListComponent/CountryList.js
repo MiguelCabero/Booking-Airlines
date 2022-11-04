@@ -1,8 +1,7 @@
 import axios from 'axios';
-import { React, useState, useEffect, useContext } from 'react';
+import { React, useEffect, useContext } from 'react';
 import Country from './Country';
 import './CountryList.component.css';
-import AppContext from '../../store/app-context';
 import TripContext from '../../store/trip-context';
 
 function CountryList(props) {

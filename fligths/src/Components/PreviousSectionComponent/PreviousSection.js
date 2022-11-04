@@ -1,7 +1,7 @@
 import AppContext from '../../store/app-context';
 import { React, useContext } from 'react';
 import TripContext from '../../store/trip-context';
-import styles from './PreviousSection.component.css';
+import './PreviousSection.component.css';
 
 const PreviousSection = () => {
 	const currentAppContext = useContext(AppContext);

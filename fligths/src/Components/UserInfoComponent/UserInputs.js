@@ -48,7 +48,7 @@ function UserInputs(props) {
 	}, [currentPassengersContext]);
 	let refBags = currentPassengersContext.passengers[props.index].bags;
 
-	const handleBags = (event) => {
+	const handleBags = () => {
 		refBags == 0 ? (refBags = 1) : (refBags = 0);
 		props.usersState[props.index] = {
 			...props.usersState[props.index],
@@ -61,7 +61,7 @@ function UserInputs(props) {
 		});
 	};
 
-	const handleChange = (event) => {
+	const handleChange = () => {
 		props.usersState[props.index] = {
 			...props.usersState[props.index],
 			age: ageRef.current.value,
