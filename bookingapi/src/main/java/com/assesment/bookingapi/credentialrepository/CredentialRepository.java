@@ -9,7 +9,7 @@ import com.assesment.bookingapi.credentialmodel.Credential;
 public interface CredentialRepository
 		extends JpaRepository<Credential, Integer> {
 
-	public Credential findByEmailAndPassWord(String email,
+	public Credential findByEmailAndPassword(String email,
 			String password);
 
 }

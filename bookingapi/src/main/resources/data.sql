@@ -1,3 +1,3 @@
-insert into `credentials` (ID,user,password) values (1,admin@mail.com,admin2022);
+insert into `credentials` (ID,email,password) values (1,'admin@mail.com','admin2022');
 
 

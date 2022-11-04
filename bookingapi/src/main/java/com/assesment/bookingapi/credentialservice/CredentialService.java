@@ -14,23 +14,19 @@ public class CredentialService {
 	@Autowired
 	CredentialRepository credentialRepository;
 
-	public CredentialService(
-			CredentialRepository credentialRepository) {
-		super();
-		this.credentialRepository = credentialRepository;
-	}
+	public ResponseEntity<Credential> getCredentials(
+			Credential credential) {
+		final Credential credential1 = credentialRepository
+				.findByEmailAndPassword(credential.getEmail(),
+						credential.getPassword());
+		System.out.println(credential);
 
-	public ResponseEntity<Credential> getCredentials(String email,
-			String password) {
-		final Credential credential = credentialRepository
-				.findByEmailAndPassWord(email, password);
-
-		if (credential == null) {
-			new ResponseEntity<Credential>(credential,
+		if (credential1 == null) {
+			return new ResponseEntity<Credential>(credential1,
 					HttpStatus.NOT_FOUND);
 		}
 
-		return new ResponseEntity<Credential>(credential,
+		return new ResponseEntity<Credential>(credential1,
 				HttpStatus.OK);
 	}
 

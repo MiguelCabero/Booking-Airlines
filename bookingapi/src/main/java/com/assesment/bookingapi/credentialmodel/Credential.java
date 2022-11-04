@@ -13,14 +13,23 @@ public class Credential {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	@Column
-	private String user;
+	private String email;
 	@Column
 	private String password;
 
-	public Credential(Integer id, String user, String password) {
+	public Credential() {
+	}
+
+	public Credential(Integer id, String email, String password) {
 		super();
 		this.id = id;
-		this.user = user;
+		this.email = email;
+		this.password = password;
+	}
+
+	public Credential(String email, String password) {
+
+		this.email = email;
 		this.password = password;
 	}
 
@@ -32,12 +41,12 @@ public class Credential {
 		this.id = id;
 	}
 
-	public String getUser() {
-		return user;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {
@@ -50,7 +59,7 @@ public class Credential {
 
 	@Override
 	public String toString() {
-		return "Credential [id=" + id + ", user=" + user
+		return "Credential [id=" + id + ", user=" + email
 				+ ", password=" + password + "]";
 	}
 
