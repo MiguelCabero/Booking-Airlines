@@ -2,42 +2,42 @@
 <testng-results ignored="0" total="8" passed="1" failed="1" skipped="6">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-11-04T13:03:23 CET" name="Default suite" finished-at="2022-11-04T13:03:36 CET" duration-ms="12625">
+  <suite started-at="2022-11-04T13:15:03 CET" name="Default suite" finished-at="2022-11-04T13:15:16 CET" duration-ms="12831">
     <groups>
     </groups>
-    <test started-at="2022-11-04T13:03:23 CET" name="Default test" finished-at="2022-11-04T13:03:36 CET" duration-ms="12625">
+    <test started-at="2022-11-04T13:15:03 CET" name="Default test" finished-at="2022-11-04T13:15:16 CET" duration-ms="12831">
       <class name="selenium.TestSelenium">
-        <test-method is-config="true" signature="setup()[pri:0, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:03:23 CET" name="setup" finished-at="2022-11-04T13:03:26 CET" duration-ms="3106" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:15:03 CET" name="setup" finished-at="2022-11-04T13:15:06 CET" duration-ms="3296" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="selectCities()[pri:0, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:03:26 CET" name="selectCities" finished-at="2022-11-04T13:03:35 CET" duration-ms="9202" status="PASS">
+        <test-method signature="selectCities()[pri:0, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:15:06 CET" name="selectCities" finished-at="2022-11-04T13:15:15 CET" duration-ms="9222" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- selectCities -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:03:35 CET" name="tearDown" finished-at="2022-11-04T13:03:36 CET" duration-ms="135" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:15:15 CET" name="tearDown" finished-at="2022-11-04T13:15:15 CET" duration-ms="159" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method signature="selectBadDate()[pri:1, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:03:36 CET" name="selectBadDate" finished-at="2022-11-04T13:03:36 CET" duration-ms="122" status="FAIL">
+        <test-method signature="selectBadDate()[pri:1, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:15:15 CET" name="selectBadDate" finished-at="2022-11-04T13:15:16 CET" duration-ms="93" status="FAIL">
           <exception class="org.openqa.selenium.NoSuchSessionException">
             <message>
               <![CDATA[invalid session id
 Build info: version: '4.5.3', revision: '4b786a1e430'
 System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [cc2ee46acc1f73dfaab3e9688ba22216, findElement {using=xpath, value=//*[@id="root"]/div/div/div[1]/form/div[1]/div[4]/label}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50571}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50571/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: cc2ee46acc1f73dfaab3e9688ba22216]]>
+Command: [1e2bbb20f8618de28b4b2b6e973939f6, findElement {using=xpath, value=//*[@id="root"]/div/div/div[1]/form/div[1]/div[4]/label}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50867}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50867/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 1e2bbb20f8618de28b4b2b6e973939f6]]>
             </message>
             <full-stacktrace>
               <![CDATA[org.openqa.selenium.NoSuchSessionException: invalid session id
 Build info: version: '4.5.3', revision: '4b786a1e430'
 System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [cc2ee46acc1f73dfaab3e9688ba22216, findElement {using=xpath, value=//*[@id="root"]/div/div/div[1]/form/div[1]/div[4]/label}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50571}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50571/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: cc2ee46acc1f73dfaab3e9688ba22216
+Command: [1e2bbb20f8618de28b4b2b6e973939f6, findElement {using=xpath, value=//*[@id="root"]/div/div/div[1]/form/div[1]/div[4]/label}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50867}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50867/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 1e2bbb20f8618de28b4b2b6e973939f6
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -89,25 +89,25 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- selectBadDate -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:03:36 CET" name="tearDown" finished-at="2022-11-04T13:03:36 CET" duration-ms="3" status="FAIL">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:15:16 CET" name="tearDown" finished-at="2022-11-04T13:15:16 CET" duration-ms="3" status="FAIL">
           <exception class="org.openqa.selenium.NoSuchSessionException">
             <message>
               <![CDATA[invalid session id
 Build info: version: '4.5.3', revision: '4b786a1e430'
 System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [cc2ee46acc1f73dfaab3e9688ba22216, close {}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50571}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50571/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: cc2ee46acc1f73dfaab3e9688ba22216]]>
+Command: [1e2bbb20f8618de28b4b2b6e973939f6, close {}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50867}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50867/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 1e2bbb20f8618de28b4b2b6e973939f6]]>
             </message>
             <full-stacktrace>
               <![CDATA[org.openqa.selenium.NoSuchSessionException: invalid session id
 Build info: version: '4.5.3', revision: '4b786a1e430'
 System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [cc2ee46acc1f73dfaab3e9688ba22216, close {}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50571}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50571/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: cc2ee46acc1f73dfaab3e9688ba22216
+Command: [1e2bbb20f8618de28b4b2b6e973939f6, close {}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50867}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50867/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 1e2bbb20f8618de28b4b2b6e973939f6
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -163,25 +163,25 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method signature="selectDate()[pri:2, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:03:36 CET" name="selectDate" finished-at="2022-11-04T13:03:36 CET" duration-ms="0" status="SKIP">
+        <test-method signature="selectDate()[pri:2, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:15:16 CET" name="selectDate" finished-at="2022-11-04T13:15:16 CET" duration-ms="0" status="SKIP">
           <exception class="org.openqa.selenium.NoSuchSessionException">
             <message>
               <![CDATA[invalid session id
 Build info: version: '4.5.3', revision: '4b786a1e430'
 System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [cc2ee46acc1f73dfaab3e9688ba22216, close {}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50571}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50571/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: cc2ee46acc1f73dfaab3e9688ba22216]]>
+Command: [1e2bbb20f8618de28b4b2b6e973939f6, close {}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50867}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50867/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 1e2bbb20f8618de28b4b2b6e973939f6]]>
             </message>
             <full-stacktrace>
               <![CDATA[org.openqa.selenium.NoSuchSessionException: invalid session id
 Build info: version: '4.5.3', revision: '4b786a1e430'
 System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [cc2ee46acc1f73dfaab3e9688ba22216, close {}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50571}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50571/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: cc2ee46acc1f73dfaab3e9688ba22216
+Command: [1e2bbb20f8618de28b4b2b6e973939f6, close {}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50867}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50867/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 1e2bbb20f8618de28b4b2b6e973939f6
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -237,29 +237,29 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- selectDate -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:03:36 CET" name="tearDown" finished-at="1970-01-01T01:00:00 CET" duration-ms="-1667563416172" status="SKIP">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:15:16 CET" name="tearDown" finished-at="1970-01-01T01:00:00 CET" duration-ms="-1667564116039" status="SKIP">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method signature="filterFligth()[pri:3, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:03:36 CET" name="filterFligth" finished-at="2022-11-04T13:03:36 CET" duration-ms="0" status="SKIP">
+        <test-method signature="filterFligth()[pri:3, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:15:16 CET" name="filterFligth" finished-at="2022-11-04T13:15:16 CET" duration-ms="0" status="SKIP">
           <exception class="org.openqa.selenium.NoSuchSessionException">
             <message>
               <![CDATA[invalid session id
 Build info: version: '4.5.3', revision: '4b786a1e430'
 System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [cc2ee46acc1f73dfaab3e9688ba22216, close {}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50571}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50571/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: cc2ee46acc1f73dfaab3e9688ba22216]]>
+Command: [1e2bbb20f8618de28b4b2b6e973939f6, close {}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50867}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50867/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 1e2bbb20f8618de28b4b2b6e973939f6]]>
             </message>
             <full-stacktrace>
               <![CDATA[org.openqa.selenium.NoSuchSessionException: invalid session id
 Build info: version: '4.5.3', revision: '4b786a1e430'
 System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [cc2ee46acc1f73dfaab3e9688ba22216, close {}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50571}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50571/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: cc2ee46acc1f73dfaab3e9688ba22216
+Command: [1e2bbb20f8618de28b4b2b6e973939f6, close {}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50867}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50867/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 1e2bbb20f8618de28b4b2b6e973939f6
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -315,29 +315,25 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- filterFligth -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:03:36 CET" name="tearDown" finished-at="1970-01-01T01:00:00 CET" duration-ms="-1667563416176" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method signature="selectFlight()[pri:4, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:03:36 CET" name="selectFlight" finished-at="2022-11-04T13:03:36 CET" duration-ms="0" status="SKIP">
+        <test-method signature="selectFlight()[pri:4, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:15:16 CET" name="selectFlight" finished-at="2022-11-04T13:15:16 CET" duration-ms="0" status="SKIP">
           <exception class="org.openqa.selenium.NoSuchSessionException">
             <message>
               <![CDATA[invalid session id
 Build info: version: '4.5.3', revision: '4b786a1e430'
 System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [cc2ee46acc1f73dfaab3e9688ba22216, close {}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50571}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50571/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: cc2ee46acc1f73dfaab3e9688ba22216]]>
+Command: [1e2bbb20f8618de28b4b2b6e973939f6, close {}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50867}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50867/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 1e2bbb20f8618de28b4b2b6e973939f6]]>
             </message>
             <full-stacktrace>
               <![CDATA[org.openqa.selenium.NoSuchSessionException: invalid session id
 Build info: version: '4.5.3', revision: '4b786a1e430'
 System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [cc2ee46acc1f73dfaab3e9688ba22216, close {}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50571}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50571/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: cc2ee46acc1f73dfaab3e9688ba22216
+Command: [1e2bbb20f8618de28b4b2b6e973939f6, close {}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50867}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50867/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 1e2bbb20f8618de28b4b2b6e973939f6
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -393,29 +389,33 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- selectFlight -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:03:36 CET" name="tearDown" finished-at="1970-01-01T01:00:00 CET" duration-ms="-1667563416180" status="SKIP">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:15:16 CET" name="tearDown" finished-at="1970-01-01T01:00:00 CET" duration-ms="-1667564116044" status="SKIP">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method signature="changePassengersPriceUpdate()[pri:5, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:03:36 CET" name="changePassengersPriceUpdate" finished-at="2022-11-04T13:03:36 CET" duration-ms="0" status="SKIP">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:15:16 CET" name="tearDown" finished-at="1970-01-01T01:00:00 CET" duration-ms="-1667564116046" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method signature="changePassengersPriceUpdate()[pri:5, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:15:16 CET" name="changePassengersPriceUpdate" finished-at="2022-11-04T13:15:16 CET" duration-ms="0" status="SKIP">
           <exception class="org.openqa.selenium.NoSuchSessionException">
             <message>
               <![CDATA[invalid session id
 Build info: version: '4.5.3', revision: '4b786a1e430'
 System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [cc2ee46acc1f73dfaab3e9688ba22216, close {}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50571}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50571/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: cc2ee46acc1f73dfaab3e9688ba22216]]>
+Command: [1e2bbb20f8618de28b4b2b6e973939f6, close {}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50867}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50867/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 1e2bbb20f8618de28b4b2b6e973939f6]]>
             </message>
             <full-stacktrace>
               <![CDATA[org.openqa.selenium.NoSuchSessionException: invalid session id
 Build info: version: '4.5.3', revision: '4b786a1e430'
 System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [cc2ee46acc1f73dfaab3e9688ba22216, close {}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50571}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50571/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: cc2ee46acc1f73dfaab3e9688ba22216
+Command: [1e2bbb20f8618de28b4b2b6e973939f6, close {}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50867}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50867/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 1e2bbb20f8618de28b4b2b6e973939f6
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -471,29 +471,25 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- changePassengersPriceUpdate -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:03:36 CET" name="tearDown" finished-at="1970-01-01T01:00:00 CET" duration-ms="-1667563416182" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method signature="clickInfoshowsInfo()[pri:6, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:03:36 CET" name="clickInfoshowsInfo" finished-at="2022-11-04T13:03:36 CET" duration-ms="0" status="SKIP">
+        <test-method signature="clickInfoshowsInfo()[pri:6, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:15:16 CET" name="clickInfoshowsInfo" finished-at="2022-11-04T13:15:16 CET" duration-ms="0" status="SKIP">
           <exception class="org.openqa.selenium.NoSuchSessionException">
             <message>
               <![CDATA[invalid session id
 Build info: version: '4.5.3', revision: '4b786a1e430'
 System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [cc2ee46acc1f73dfaab3e9688ba22216, close {}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50571}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50571/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: cc2ee46acc1f73dfaab3e9688ba22216]]>
+Command: [1e2bbb20f8618de28b4b2b6e973939f6, close {}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50867}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50867/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 1e2bbb20f8618de28b4b2b6e973939f6]]>
             </message>
             <full-stacktrace>
               <![CDATA[org.openqa.selenium.NoSuchSessionException: invalid session id
 Build info: version: '4.5.3', revision: '4b786a1e430'
 System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [cc2ee46acc1f73dfaab3e9688ba22216, close {}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50571}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50571/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: cc2ee46acc1f73dfaab3e9688ba22216
+Command: [1e2bbb20f8618de28b4b2b6e973939f6, close {}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50867}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50867/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 1e2bbb20f8618de28b4b2b6e973939f6
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -549,29 +545,33 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- clickInfoshowsInfo -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:03:36 CET" name="tearDown" finished-at="1970-01-01T01:00:00 CET" duration-ms="-1667563416184" status="SKIP">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:15:16 CET" name="tearDown" finished-at="1970-01-01T01:00:00 CET" duration-ms="-1667564116049" status="SKIP">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method signature="windowReloadKeepsState()[pri:7, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:03:36 CET" name="windowReloadKeepsState" finished-at="2022-11-04T13:03:36 CET" duration-ms="0" status="SKIP">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:15:16 CET" name="tearDown" finished-at="1970-01-01T01:00:00 CET" duration-ms="-1667564116051" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method signature="windowReloadKeepsState()[pri:7, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:15:16 CET" name="windowReloadKeepsState" finished-at="2022-11-04T13:15:16 CET" duration-ms="1" status="SKIP">
           <exception class="org.openqa.selenium.NoSuchSessionException">
             <message>
               <![CDATA[invalid session id
 Build info: version: '4.5.3', revision: '4b786a1e430'
 System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [cc2ee46acc1f73dfaab3e9688ba22216, close {}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50571}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50571/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: cc2ee46acc1f73dfaab3e9688ba22216]]>
+Command: [1e2bbb20f8618de28b4b2b6e973939f6, close {}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50867}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50867/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 1e2bbb20f8618de28b4b2b6e973939f6]]>
             </message>
             <full-stacktrace>
               <![CDATA[org.openqa.selenium.NoSuchSessionException: invalid session id
 Build info: version: '4.5.3', revision: '4b786a1e430'
 System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [cc2ee46acc1f73dfaab3e9688ba22216, close {}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50571}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50571/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: cc2ee46acc1f73dfaab3e9688ba22216
+Command: [1e2bbb20f8618de28b4b2b6e973939f6, close {}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.88, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\LEONAR~1.ANG\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:50867}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50867/devtoo..., se:cdpVersion: 107.0.5304.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 1e2bbb20f8618de28b4b2b6e973939f6
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -627,11 +627,11 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- windowReloadKeepsState -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:03:36 CET" name="tearDown" finished-at="1970-01-01T01:00:00 CET" duration-ms="-1667563416186" status="SKIP">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:15:16 CET" name="tearDown" finished-at="1970-01-01T01:00:00 CET" duration-ms="-1667564116056" status="SKIP">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:03:36 CET" name="tearDown" finished-at="1970-01-01T01:00:00 CET" duration-ms="-1667563416187" status="SKIP">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:selenium.TestSelenium@17f62e33]" started-at="2022-11-04T13:15:16 CET" name="tearDown" finished-at="1970-01-01T01:00:00 CET" duration-ms="-1667564116057" status="SKIP">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
