@@ -10,7 +10,17 @@ function UserForm(props) {
 	const currentTripContext = useContext(TripContext);
 	const currentPassengersContext = useContext(PassengersContext);
 	let users = currentPassengersContext.passengers;
-	let currentTrips = [...currentTripContext.trips]
+	let currentTrips = [...currentTripContext.trips];
+
+	let price;
+
+	if (currentTrips[0].finalPrices.length > 0) {
+		price = currentTrips[0].finalPrices.reduce(
+			(a, b) => parseFloat(a) + parseFloat(b)
+		);
+	} else {
+		price = parseFloat(currentTrips[0].basePrice);
+	}
 
 	const passengerBase = {
 		name: '',
@@ -29,7 +39,6 @@ function UserForm(props) {
 	const handleClick = (event) => {
 		event.preventDefault();
 		users.push(structuredClone(passengerBase));
-		console.log(currentPassengersContext.passengers);
 		currentPassengersContext.setPassengers([...users]);
 	};
 
@@ -56,7 +65,7 @@ function UserForm(props) {
 					</div>
 					<div>
 						<p>
-							<b>Total price: {currentTrips[0].finalPrices.reduce((a,b)=> a+b)}€</b>
+							<b>Total price:{parseFloat(price).toFixed(2)}€</b>
 						</p>
 					</div>
 					<input

@@ -47,8 +47,8 @@ public class PriceService {
 
 		final Airline retrievedAirline = getById(flight.getAirline())
 				.get();
-		flight.setLuggage(retrievedAirline.isIncludedLuggage());
-		final double luggageFactor = 1 + (flight.getLuggage() * 1.3);
+
+		final double luggageFactor = 1 + (flight.getLuggage() * 0.2);
 
 		if (retrievedAirline == null) {
 			throw new ClassNotFoundException();
