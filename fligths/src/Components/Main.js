@@ -26,7 +26,6 @@ const Main = () => {
 			{currentAppContext.step == 5 && <UserForm />}
 			{currentAppContext.step == 6 && <Payment />}
 			{currentAppContext.step != 1 && <PreviousSection />}
-
 		</div>
 	);
 };

@@ -1,6 +1,7 @@
 package com.assesment.bookingapi.credentialservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
@@ -19,12 +20,18 @@ public class CredentialService {
 		this.credentialRepository = credentialRepository;
 	}
 
-	public ResponseEntity<Object> getCredentials(String email,
+	public ResponseEntity<Credential> getCredentials(String email,
 			String password) {
 		final Credential credential = credentialRepository
 				.findByEmailAndPassWord(email, password);
-		
-		 return new ResponseEntity<Object>;
+
+		if (credential == null) {
+			new ResponseEntity<Credential>(credential,
+					HttpStatus.NOT_FOUND);
+		}
+
+		return new ResponseEntity<Credential>(credential,
+				HttpStatus.OK);
 	}
 
 }
