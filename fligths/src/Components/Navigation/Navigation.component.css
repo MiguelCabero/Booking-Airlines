@@ -2,7 +2,7 @@
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
-	padding: 1rem;
+	padding: 0.5rem;
 	background-color: var(--primary-color);
 }
 
@@ -33,7 +33,7 @@
 .links-container li a {
 	width: 25%;
 	background-color: whitesmoke;
-	padding: 1rem;
+	padding: 0.5rem;
 	border-radius: 0.5rem;
 	border: 1px solid whitesmoke;
 	text-align: center;
@@ -46,4 +46,17 @@
 
 .header {
 	margin-bottom: 20px;
+}
+
+.navButton {
+	width: 25%;
+	background-color: whitesmoke;
+	padding: 0.5rem;
+	border-radius: 0.5rem;
+	border: 1px solid whitesmoke;
+	text-align: center;
+}
+
+.navButton:hover {
+	cursor: pointer;
 }
