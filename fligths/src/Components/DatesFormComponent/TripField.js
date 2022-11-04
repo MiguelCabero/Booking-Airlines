@@ -17,7 +17,7 @@ function TripField(props) {
 				<input
 					type='text'
 					name='trip-destination'
-					id='trip-origin'
+					id='trip-destination'
 					defaultValue={props.destination}
 					readOnly
 				/>
