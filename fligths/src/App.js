@@ -4,7 +4,6 @@ import Main from "./Components/Main";
 import NotFound from "./NotFound/NotFoundComponent";
 import About from "./Components/AboutComponent/About";
 import Login from "./Components/LoginComponent/Login";
-import Payment from "./Components/PaymentComponent/Payment";
 function App() {
   return (
     <Layout>
@@ -13,7 +12,6 @@ function App() {
         <Route path="/about" exact={true} element={<About />} />
         <Route path="*" exact={true} element={<NotFound />} />
         <Route path="/login" exact={true} element={<Login />} />
-        <Route path="/payment" exact={true} element={<Payment />} />
       </Routes>
     </Layout>
   );

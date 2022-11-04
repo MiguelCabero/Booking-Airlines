@@ -6,6 +6,7 @@ import { React, useContext } from 'react';
 import AppContext from '../store/app-context';
 import TripContext from '../store/trip-context';
 import PreviousSection from './PreviousSectionComponent/PreviousSection';
+import Payment from './PaymentComponent/Payment';
 
 const Main = () => {
 	const currentAppContext = useContext(AppContext);
@@ -23,6 +24,7 @@ const Main = () => {
 			)}
 			{currentAppContext.step == 4 && <ResultsForm />}
 			{currentAppContext.step == 5 && <UserForm />}
+			{currentAppContext.step == 6 && <Payment />}
 			{currentAppContext.step != 1 && <PreviousSection />}
 
 		</div>
