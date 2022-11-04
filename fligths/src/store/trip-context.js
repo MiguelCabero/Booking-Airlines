@@ -1,143 +1,67 @@
-import { createContext, useState } from "react";
+import { createContext, useState } from 'react';
 
 let initialTripContext = JSON.parse(
-  window.localStorage.getItem("trip-context")
+	window.localStorage.getItem('trip-context')
 ) || {
-  trip: {
-    availableCountries: [],
-    selectedOrigin: {},
-    selectedDestination: {},
-    selectedDate: new Date().toISOString().split("T")[0],
-    luggage: "",
-    layover: "",
-    results: [],
-    selectedCompany: "",
-    price: "",
-    setOrigin: (origin) => {},
-    setDestination: (destination) => {},
-    setDate: (date) => {},
-    setCities: (date) => {},
-    setResults: (results) => {},
-    setCompany: (company) => {},
-    setLayover: (layover) => {},
-    setLuggage: (luggage) => {},
-    setPrice: (price) => {},
-  },
-  backTrip: {
-    selectedOrigin: {},
-    selectedDestination: {},
-    selectedDate: "",
-    selectedCompany: "",
-  },
-  setBackTrip: (backTrip) => {},
+	availableCities: [],
+	trips: [
+		{
+			selectedOrigin: {},
+			selectedDestination: {},
+			selectedDate: new Date().toISOString().split('T')[0],
+			luggage: '',
+			layover: '',
+			results: [],
+			selectedCompany: '',
+			basePrice: 0,
+			finalPrices: [],
+		},
+		{
+			selectedOrigin: {},
+			selectedDestination: {},
+			selectedDate: new Date().toISOString().split('T')[0],
+			luggage: '',
+			layover: '',
+			results: [],
+			selectedCompany: '',
+			basePrice: 0,
+			finalPrices: [],
+		},
+	],
+	setAvailableCities: (cities) => {},
+	setTrips: (trips) => {},
 };
 
 const TripContext = createContext(initialTripContext);
 
 export function TripContextProvider(props) {
-  const [currentAvailableCities, setCurrentAvailableCities] = useState(
-    initialTripContext.trip.availableCountries
-  );
+	const [currentAvailableCities, setCurrentAvailableCities] = useState(
+		initialTripContext.availableCities
+	);
 
-  const [currentSelectedCompany, setCurrentSelectedCompany] = useState(
-    initialTripContext.trip.selectedCompany
-  );
-  const [currentOrigin, setCurrentOrigin] = useState(
-    initialTripContext.trip.selectedOrigin
-  );
-  const [currentDestination, setCurrentDestination] = useState(
-    initialTripContext.trip.selectedDestination
-  );
-  const [currentSelectedDate, setCurrentSelectedDate] = useState(
-    initialTripContext.trip.selectedDate
-  );
-  const [currentResults, setCurrentResults] = useState(
-    initialTripContext.trip.results
-  );
-  const [currentBackTrip, setCurrentBackTrip] = useState(
-    initialTripContext.backTrip
-  );
+	const [currentTrips, setCurrentTrips] = useState(initialTripContext.trips);
 
-  const [currentLayover, setCurrentLayover] = useState(
-    initialTripContext.trip.layover
-  );
-  const [currentLuggage, setCurrentLuggage] = useState(
-    initialTripContext.trip.luggage
-  );
+	function setCitiesHandler(cities) {
+		setCurrentAvailableCities(cities);
+	}
 
-  const [currentPrice, setPrice] = useState(initialTripContext.trip.price);
+	function tripsHandler(trips) {
+		setCurrentTrips(trips);
+	}
 
-  function luggageHandler(luggage) {
-    setCurrentLuggage(luggage);
-  }
+	const context = {
+		availableCities: currentAvailableCities,
+		trips: currentTrips,
+		setAvailableCities: setCitiesHandler,
+		setTrips: tripsHandler,
+	};
 
-  function layoverHandler(layover) {
-    setCurrentLayover(layover);
-  }
-
-  function resultsHandler(results) {
-    setCurrentResults(results);
-  }
-
-  function companyHandler(company) {
-    setCurrentSelectedCompany(company);
-  }
-
-  function backTripHandler(backTrip) {
-    setCurrentBackTrip(backTrip);
-  }
-
-  function setOriginHandler(origin) {
-    setCurrentOrigin(origin);
-  }
-
-  function setCitiesHandler(cities) {
-    setCurrentAvailableCities(cities);
-  }
-
-  function setDestinationHandler(destination) {
-    setCurrentDestination(destination);
-  }
-
-  function setCurrentDateHandler(date) {
-    setCurrentSelectedDate(date);
-  }
-
-  function priceHandler(price) {
-    setPrice(price);
-  }
-
-  const context = {
-    trip: {
-      availableCountries: currentAvailableCities,
-      selectedOrigin: currentOrigin,
-      selectedDestination: currentDestination,
-      selectedDate: currentSelectedDate,
-      selectedCompany: currentSelectedCompany,
-      layover: currentLayover,
-      luggage: currentLuggage,
-      results: currentResults,
-      price: currentPrice,
-      setOrigin: setOriginHandler,
-      setDestination: setDestinationHandler,
-      setDate: setCurrentDateHandler,
-      setCities: setCitiesHandler,
-      setResults: resultsHandler,
-      setCompany: companyHandler,
-      setLayover: layoverHandler,
-      setLuggage: luggageHandler,
-      setPrice: priceHandler,
-    },
-    backTrip: currentBackTrip,
-    setBackTrip: backTripHandler,
-  };
-
-  window.localStorage.setItem("trip-context", JSON.stringify(context));
-  return (
-    <TripContext.Provider value={context}>
-      {props.children}
-    </TripContext.Provider>
-  );
+	window.localStorage.setItem('trip-context', JSON.stringify(context));
+	return (
+		<TripContext.Provider value={context}>
+			{props.children}
+		</TripContext.Provider>
+	);
 }
 
 export default TripContext;

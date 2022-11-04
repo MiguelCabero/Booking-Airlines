@@ -23,18 +23,13 @@ function UserForm(props) {
 		event.preventDefault();
 		currentAppContext.setStep(++currentAppContext.step);
 	}
-	function handleClick(event) {
+
+	const handleClick = (event) => {
 		event.preventDefault();
 		users.push(structuredClone(passengerBase));
 		console.log(currentPassengersContext.passengers);
 		currentPassengersContext.setPassengers([...users]);
-	}
-
-	/*function handleUpdate(event) {
-			event.preventDefault();
-			users.splice(event.target.value, 1);
-			currentPassengersContext.setPassengers([...users]);
-		}*/
+	};
 
 	return (
 		<div className='passenger-form-container'>
@@ -42,7 +37,7 @@ function UserForm(props) {
 			<form
 				className='passenger-form'
 				onSubmit={clickHandler}>
-				{currentPassengersContext.passengers.map((passenger, index) => (
+				{users.map((passenger, index) => (
 					<UserInputs
 						key={index}
 						index={index}

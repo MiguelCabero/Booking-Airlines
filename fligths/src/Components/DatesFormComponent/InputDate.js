@@ -4,16 +4,21 @@ import TripContext from '../../store/trip-context';
 function InputDate(props) {
 	const tripContext = useContext(TripContext);
 
+	let currentTrips = [...tripContext.trips];
+
 	function handleChange(event) {
 		event.preventDefault();
-		if (props.action == 'trip-date') {
-			tripContext.trip.setDate(event.target.value);
-		} else {
-			tripContext.setBackTrip({
-				selectedOrigin: tripContext.trip.selectedDestination,
-				selectedDestination: tripContext.trip.selectedOrigin,
-				selectedDate: event.target.value,
-			});
+		if (props.validationHandler(event)) {
+			if (props.action == 'trip-date') {
+				currentTrips[0].selectedDate = event.target.value;
+			} else {
+				currentTrips[1].selectedOrigin = currentTrips[0].selectedOrigin;
+				currentTrips[1].selectedDestination =
+					currentTrips[0].selectedDestination;
+				currentTrips[1].selectedDate = event.target.value;
+			}
+
+			tripContext.setTrips([...currentTrips]);
 		}
 	}
 	return (

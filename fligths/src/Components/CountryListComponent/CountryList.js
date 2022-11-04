@@ -8,7 +8,7 @@ import TripContext from '../../store/trip-context';
 function CountryList(props) {
 	const tripContext = useContext(TripContext);
 	useEffect(() => {
-		if (tripContext.trip.availableCountries.length === 0) {
+		if (tripContext.availableCities.length === 0) {
 			callCities();
 		}
 	}, []);
@@ -21,28 +21,16 @@ function CountryList(props) {
 				},
 			})
 			.then((response) => {
-				tripContext.trip.setCities(response.data);
+				tripContext.setAvailableCities(response.data);
 			});
 	}
 
-	const currentAppContext = useContext(AppContext);
-
-	function handlePrevious(event) {
-		event.preventDefault();
-		currentAppContext.setStep(--currentAppContext.step);
-
-		if (currentAppContext.step == 1) {
-			window.localStorage.removeItem('trip-context');
-			window.localStorage.removeItem('app-context');
-			document.location.reload();
-		}
-	}
 	return (
 		<div className='countryList'>
 			<h2>Select your {props.action}</h2>
 
-			{tripContext.trip.availableCountries
-				.filter((city) => city.name != tripContext.trip.selectedOrigin.name)
+			{tripContext.availableCities
+				.filter((city) => city.name != tripContext.trips[0].selectedOrigin.name)
 				.map((city, index) => (
 					<Country
 						name={city.name}

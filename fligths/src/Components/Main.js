@@ -16,8 +16,8 @@ const Main = (props) => {
 			{currentAppContext.step == 2 && <CountryList action={'destination'} />}
 			{currentAppContext.step == 3 && (
 				<DatesForm
-					origin={tripContext.trip.selectedOrigin.name}
-					destination={tripContext.trip.selectedDestination.name}
+					origin={tripContext.trips[0].selectedOrigin.name}
+					destination={tripContext.trips[0].selectedDestination.name}
 					checked={true}
 				/>
 			)}

@@ -12,7 +12,7 @@ const PreviousSection = () => {
 		currentAppContext.setStep(--currentAppContext.step);
 
 		if (currentAppContext.step == 1) {
-			tripContext.trip.setOrigin({});
+			tripContext.trips[0].selectedOrigin = {};
 		}
 	}
 

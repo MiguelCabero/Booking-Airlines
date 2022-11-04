@@ -12,14 +12,42 @@ function ResultsForm(props) {
 	const lugaggeFilter = useRef(null);
 	const layoverFilter = useRef(null);
 
-	let filters = currentTripContext.trip.results;
+	let currentTrips = [...currentTripContext.trips];
+
+	let filters = currentTripContext.trips[0].results;
 
 	const [filteredResults, setFilteredResults] = useState([
-		...currentTripContext.trip.results,
+		...currentTripContext.trips[0].results,
 	]);
 
+	function callResults() {
+		axios
+			.get(
+				`http://localhost:8083/api/prices/${currentTripContext.trips[0].selectedOrigin.id}/${currentTripContext.trips[0].selectedDestination.id}/${currentTripContext.trips[0].selectedDate}`,
+				{
+					headers: {
+						Accept: 'application/json',
+					},
+				}
+			)
+			.then((response) => {
+				currentTrips[0].results = response.data;
+				currentTripContext.setTrips(currentTrips);
+			});
+	}
+
+	useEffect(() => {
+		if (
+			currentTripContext.trips[0].selectedOrigin != null &&
+			currentTripContext.trips[0].selectedDestination != null
+		) {
+			callResults();
+			setFilteredResults([...currentTripContext.trips[0].results]);
+		}
+	}, []);
+
 	function filterHandler() {
-		let filtersApplied = [...currentTripContext.trip.results];
+		let filtersApplied = [...currentTripContext.trips[0].results];
 		if (dateFilter.current.value != '') {
 			filtersApplied = filtersApplied.filter(
 				(result) => result.date_selected == dateFilter.current.value
@@ -39,39 +67,15 @@ function ResultsForm(props) {
 		setFilteredResults(filtersApplied);
 	}
 
+	//Para que la info de los resultados cambie sin necesidad de recargar la página
 	useEffect(() => {
 		if (
-			currentTripContext.trip.selectedOrigin != null &&
-			currentTripContext.trip.selectedDestination != null
+			currentTripContext.trips[0].selectedOrigin != null &&
+			currentTripContext.trips[0].selectedDestination != null
 		) {
-			callResults();
-			setFilteredResults([...currentTripContext.trip.results]);
+			setFilteredResults([...currentTripContext.trips[0].results]);
 		}
-	}, []);
-
-	useEffect(() => {
-		if (
-			currentTripContext.trip.selectedOrigin != null &&
-			currentTripContext.trip.selectedDestination != null
-		) {
-			setFilteredResults([...currentTripContext.trip.results]);
-		}
-	}, [currentTripContext.trip.results]);
-
-	function callResults() {
-		axios
-			.get(
-				`http://localhost:8083/api/prices/${currentTripContext.trip.selectedOrigin.id}/${currentTripContext.trip.selectedDestination.id}/${currentTripContext.trip.selectedDate}`,
-				{
-					headers: {
-						Accept: 'application/json',
-					},
-				}
-			)
-			.then((response) => {
-				currentTripContext.trip.setResults(response.data);
-			});
-	}
+	}, [currentTripContext.trips]);
 
 	function randomTime() {
 		let hrs = Math.round(Math.random() * 24);
@@ -94,7 +98,7 @@ function ResultsForm(props) {
 				lugaggeFilterReference={lugaggeFilter}
 				layoverFilterReference={layoverFilter}
 			/>
-			{currentTripContext.trip.results &&
+			{currentTripContext.trips[0].results &&
 				(filteredResults.length > 0 ? (
 					filteredResults.map((result, index) => (
 						<ResultItem

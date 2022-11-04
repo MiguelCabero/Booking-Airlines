@@ -29,6 +29,7 @@ function UserInputs(props) {
 			return prevState;
 		});
 	};
+
 	const handleChange = (event) => {
 		props.usersState[props.index] = {
 			...props.usersState[props.index],

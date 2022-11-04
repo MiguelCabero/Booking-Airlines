@@ -2,13 +2,16 @@ import ToggleCheck from '../ToggleCheck';
 import './DatesForm.component.css';
 import InputDate from './InputDate';
 import TripField from './TripField';
+import TripContext from '../../store/trip-context';
 import AppContext from '../../store/app-context';
 import { React, useContext, useState, useRef } from 'react';
 
 function DatesForm(props) {
 	const currentAppContext = useContext(AppContext);
+	const currentTripContext = useContext(TripContext);
 	const inputTrip = useRef(null);
 	const inputBacktrip = useRef(null);
+	let currentTrips = [...currentTripContext.trips];
 
 	const [checked, setChecked] = useState(props.checked);
 	function handleToggle() {
@@ -20,6 +23,7 @@ function DatesForm(props) {
 		let today = new Date();
 		let yesterday = new Date();
 		yesterday.setDate(today.getDate() - 1);
+		let valid = false;
 		if (
 			inputTrip.current.value == '' ||
 			Date.parse(inputTrip.current.value) < Date.parse(yesterday)
@@ -27,7 +31,15 @@ function DatesForm(props) {
 			document
 				.getElementsByClassName('errorSpan')[0]
 				.classList.remove('invisible');
-		} else if (
+			valid = false;
+		} else {
+			document
+				.getElementsByClassName('errorSpan')[0]
+				.classList.add('invisible');
+			valid = true;
+		}
+
+		if (
 			checked &&
 			(inputBacktrip.current.value == '' ||
 				inputBacktrip.current.value < inputTrip.current.value)
@@ -35,11 +47,24 @@ function DatesForm(props) {
 			document
 				.getElementsByClassName('errorSpan')[1]
 				.classList.remove('invisible');
+			valid = false;
 		} else {
-			submitHandler(event);
+			checked &&
+				document
+					.getElementsByClassName('errorSpan')[1]
+					.classList.add('invisible');
+
+			valid = true;
 		}
+
+		return valid;
 	}
 	function submitHandler(event) {
+		validateForm(event);
+		if (!checked) {
+			currentTrips.splice(1, 1);
+			currentTripContext.setTrips([...currentTrips]);
+		}
 		currentAppContext.setStep(++currentAppContext.step);
 	}
 
@@ -48,7 +73,7 @@ function DatesForm(props) {
 			<h2>Select dates</h2>
 			<form
 				className='booking-form'
-				onSubmit={validateForm}>
+				onSubmit={submitHandler}>
 				<div className='inputs-field'>
 					<TripField
 						origin={props.origin}
@@ -59,6 +84,7 @@ function DatesForm(props) {
 						action='trip-date'
 						reference={inputTrip}
 						errorMessage='La fecha no puede ser nula ni anterior a la actual'
+						validationHandler={validateForm}
 					/>
 
 					{checked && (
@@ -67,6 +93,7 @@ function DatesForm(props) {
 							action='back-date'
 							reference={inputBacktrip}
 							errorMessage='La fecha no puede ser nula ni anterior a la fecha de ida'
+							validationHandler={validateForm}
 						/>
 					)}
 
